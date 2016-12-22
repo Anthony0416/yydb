@@ -1,0 +1,25 @@
+#content {
+	/*height: 1rem;*/
+	margin: 0.5rem auto 20px;
+	background-color: #F5F5F5;
+}
+#content div {
+	padding: .15rem;
+	background-color: white;
+	margin: .1rem 0;
+}
+#content p {
+	margin: 3px 0;
+	font-size: 15px;
+	color: #b0b0b0;
+}
+#content p:last-child {
+	/*color: #000;*/
+}
+b {
+	color: #b0b0b0;
+}
+.result {
+	float: right;
+	margin-right: 0.04rem;
+}

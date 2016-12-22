@@ -1,0 +1,168 @@
+@media
+all{html{font-size:16px}}@media all and (min-width:140px) and (min-height:220px){html{font-size:9px}}@media all and (min-width: 220px) and  (min-height: 140px){html{font-size:9px}}@media all and (min-width:210px) and (min-height:280px),(min-width:280px) and (min-height:210px),(min-width:280px) and (min-height:280px){html{font-size:14px}}@media all and (min-width:300px) and (min-height:460px),(min-width:460px) and (min-height:300px){html{font-size:16px}}@media all and (min-width:340px) and (min-height:620px),(min-width:620px) and (min-height:340px){html{font-size:20px}}@media all and (min-width:420px) and (min-height:760px) and (max-height:900px),
+(min-width:760px) and (max-width:900px) and (min-height:420px){html{font-size:24px}}@media all and (min-width:500px) and (min-height:900px) ,(min-width:900px) and (min-height:500px){html{font-size:28px}}@media all and (min-width:1000px) and (min-height:740px),(min-width:740px) and (min-height:1000px){html{font-size:20px}}@media all and (min-width:1200px) and (min-height:600px),(min-width:600px) and (min-height:1200px){html{font-size:32px}}@media all and (device-width:1024px),(device-width:768px){html{font-size:20px}}@media all and (device-width:960px) and (device-height:640px),(device-width:640px) and (device-height:960px){html{font-size:32px}}@media all and (device-width:480px) and (min-device-height:800px) and (max-device-height:900px),
+(min-device-width:800px) and (max-device-width:900px) and (device-height:480px){html{font-size:24px}}@media all and (device-width:360px) and (device-height:640px),(device-width:640px) and (device-height:360px){html{font-size:20px}}@media all and (device-width:320px) and (device-height:480px),(device-width:480px) and (device-height:320px){html{font-size:16px}}@media all and (device-width:240px) and (device-height:320px),(device-width:320px) and (device-height:240px),(device-width:320px) and (device-height:320px){html{font-size:14px}}input[type="submit"],input[type="reset"],input[type="button"],button{-webkit-appearance:none}input[type="checkbox"]{-webkit-appearance:checkbox;-moz-appearance:checkbox;border-radius:0}.app_bglayer{width:100%;height:70px;position:fixed;background:#000;opacity:.8;bottom:0;left:0;z-index:1}.app_download{width:100%;height:70px;position:fixed;bottom:0;left:0;z-index:2}.app_img{width:320px;height:70px;margin:0
+auto;position:relative}.download{width:320px;height:70px;background:url(http://cdn1.woying.com/img/mwoying/mwoying_adv.png)  no-repeat 0 0;background-size:100% auto;display:block}.close_app{width:20px;height:20px;display:block;position:absolute;top:0;right:0;z-index:3}*{-webkit-tap-highlight-color:rgba(0,0,0,0)}html,body,h1,h2,h3,hr,p,dl,dt,dd,ul,ol,li,form,button,input,textarea,th,td{margin:0;padding:0}ul,ol,li{list-style:none}body{color:#2a313b;background:#f1f1f1;font-family:"微软雅黑"}table{border-collapse:collapse;border-spacing:0}a img,img,embed,object{border:none;vertical-align:middle}a:focus{outline:none;-moz-outline-style:none}a,button,input{-webkit-tap-highlight-color:rgba(255,0,0,0)}em,i,var{font-style:normal}.red{color:#f30}.blue{color:#06c}.floatL{float:left}.floatR{float:right}a:link,a:visited{text-decoration:none}a:hover,a:active{text-decoration:none}a:focus{outline:none;-moz-outline-style:none}.header,.main-body,.footer{width:100%}.header{height:40px;overflow:hidden;position:fixed;top:0;left:0;background-image:-moz-linear-gradient(top, #f0f0ee, #e2e2e2);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0,#f0f0ee ), color-stop(1,#e2e2e2));border-bottom:1px solid #bababa;text-align:center;z-index:999;box-shadow:0px 2px 4px #ccc}.header
+.title{line-height:40px;font-size:18px;font-weight:bold;display:inline-block;color:#f60;font-family:"微软雅黑";text-shadow:0px 0px 2px #fff;cursor:pointer}.header .title
+em{width:0;height:0;line-height:0;border:5px
+solid #000;border-color:#f30 transparent transparent;position:relative;display:inline-block;margin-left:4px}.header
+a{width:24px;height:24px;text-indent:-3000px;position:absolute;top:8px;left:8px;display:inline-block;background:url(http://cdn1.woying.com/img/correct/mwoying/gobackicon.png) no-repeat 0 0;background-size:100% 100%;font-size:0}.header
+a.home{background:url(http://cdn1.woying.com/img/correct/mwoying/homeicon.png) no-repeat 0 0;background-size:100% 100%;left:auto;right:8px;top:8px}.header .title
+img{height:40px}.header
+a.wechat_ljBT{background:url(http://cdn1.woying.com/img/correct/mwoying/wechat_ljBT.png) no-repeat 0 0;width:50px;height:24px;background-size:100% 100%;right:48px}.header
+a.wechat_fxBT{background:url(http://cdn1.woying.com/img/correct/mwoying/wechat_fxBT.png) no-repeat 0 0;width:50px;height:24px;background-size:100% 100%;right:48px}.main-body{overflow-x:hidden;margin:40px
+0 54px 0}.jczq,.bjdc{margin:65px
+0 58px 0}.sfc_body,.fc3dbox{margin:74px
+0 58px}.jclq,.jclq_rfsf,.jclq_dxf,.jclq_sfc{margin:74px
+0 58px 0}.kj_box{margin:48px
+0 0}.kjmx{margin:48px
+0 0}.betting{margin:40px
+0 122px}.jczq_body
+.betting{margin:40px
+0 154px}.sfcbox
+.betting{margin:40px
+0 94px}.hemai{float:left;width:100%;background:#e6e6e6;position:fixed;bottom:112px;left:0;z-index:999}.jczq_body
+.hemai{bottom:147px}.sfcbox
+.hemai{bottom:83px}.hemai
+ul{float:left;width:100%;border-top:1px solid #ccc;border-bottom:1px solid #ccc}.hemai ul
+li{border-top:1px solid #fff;border-bottom:1px solid #ccc;padding:2px;line-height:24px;font-size:12px;font-family:"微软雅黑";color:#666;float:left;width:100%}.hemai ul li
+strong{float:left;width:25%;text-align:right;color:#666;font-weight:lighter}.hemai ul li
+span{float:left;width:75%}.hemai ul li
+select{width:auto;height:20px;line-height:20px;border:1px
+solid #ccc;font-size:12px}.hemai ul li
+input{width:5em;text-align:center;border:1px
+solid #ccc;height:18px}.hemai ul li input:focus{border:1px
+solid #f30}.hemai ul li
+input.asde{width:auto;position:relative;top:4px}.hemai ul li
+label{font-size:12px}.hemaibox{margin:40px
+0 310px}.jczq_body
+.hemaibox{margin:40px
+0 336px}.sfcbox
+.hemaibox{margin:40px
+0 272px}.game_choice{position:fixed;width:160px;left:50%;margin-left:-80px;top:40px;border-radius:5px;background:#474747;z-index:1001;padding:8px
+0;display:none}.jczq_choice{width:240px;margin-left:-120px}.game_choice
+a{float:left;width:100%;line-height:30px;text-align:center;display:block;color:#fff;border-bottom:1px solid #312f30;border-top:1px solid #545454;font-size:14px}.jczq_choice
+a{width:50%}.triangle{width:0;height:0;line-height:0;border:8px
+solid #000;border-color:transparent transparent #474747 transparent;position:absolute;left:72px;top:-16px}.jczq_choice
+.triangle{left:112px}.betcontrol{position:fixed;bottom:0;left:0;height:48px;width:100%;background:#f2f2f2;border-top:1px solid #ccc;box-shadow:0px -2px 4px #ccc;z-index:999}.betcontrol
+.clear{float:left;width:16%;height:42px;line-height:42px;margin:3px
+0 3px 1%;display:inline;text-align:center;border-radius:2px;background:#1986ef;box-shadow:0 0 1px #064b8e inset;font-size:16px;border:none;color:#fff;font-family:"微软雅黑";font-weight:bold;text-shadow:0 0 2px #064280;cursor:pointer}.hm_control
+input{float:left;width:20%;margin:3px
+0 2px 1%;height:40px;line-height:40px;border:1px
+solid #06c;color:#666;text-align:center;font-size:14px}.betcontrol
+a{float:left;width:79%;height:42px;line-height:42px;margin:3px
+1%;padding:0
+1%;display:inline;border-radius:4px;background:#f60;box-shadow:0 0 2px #c13f02 inset;color:#fff;font-family:"微软雅黑";font-size:16px}.allbetcon .betcontrol
+a{width:40%;text-align:center;margin:3px
+4%}.allbetcon .betcontrol
+a.cancel{background:#e1e1e1;color:#333;box-shadow:0 0 2px #ccc inset}.hm_control
+a{width:74%}.betcontrol a
+span{float:left;font-size:12px;text-shadow:1px 1px 1px #f30}.betcontrol a
+span.jczqje{line-height:18px;font-size:12px;padding:4px
+0 0}.betcontrol a
+var{float:right;font-style:normal;text-shadow:1px 1px 1px #f30}.betcontrol a span
+b{padding-left:10px;color:yellow}.betsetting{width:100%;height:64px;position:fixed;bottom:53px;left:0;z-index:999}.jczq_bet{height:96px}.sfc_bet{height:32px;bottom:52px}.betsetting
+ul{float:left;width:100%;background:#e6e6e6;border-top:1px solid #ccc}.betsetting ul
+li{float:left;width:100%;height:32px;line-height:32px;border-top:1px solid #fff;border-bottom:1px solid #ccc;font-family:"微软雅黑";text-align:center}.betsetting ul
+li.guog_way{height:64px}.betsetting ul li
+span{float:left;width:49.5%;border-right:1px solid #fff;text-align:center;font-size:12px}.betsetting ul li span
+input{width:5em;height:24px;line-height:24px;margin:0
+8px;border:1px
+solid #ccc;text-align:center}.betsetting ul li span label
+input{width:auto;height:auto;line-height:normal}.betsetting ul li span input:focus{border-color:#f30}.betsetting ul li
+span.last{border-right:none;border-left:1px solid #ccc}.betsetting ul li.guog_way
+b{float:left;width:20%;text-align:center;height:48px;padding:8px
+0;line-height:24px;font-size:14px}.betsetting ul li.guog_way
+table{float:right;width:80%;border-top:1px solid #dadada;height:54px;margin:2px
+0}.betsetting ul li.guog_way table
+td{border-bottom:1px solid #dadada;border-left:1px solid #dadada}.betsetting ul li.guog_way
+a{float:left;width:100%;height:28px;text-align:center;background:#f2f2f2;color:#06c;font-size:14px}.betsetting ul li.guog_way
+a.unselectable{color:#999}.betsetting ul li.guog_way
+a.selected{color:#fff;background:#f60}.launch{float:left;width:50%;cursor:pointer;font-size:16px}.jczq_bet .launch,.sfc_bet
+.launch{width:100%}.launch
+em{width:.9em;height:.9em;border:1px
+solid #999;background:#fff;box-shadow:0 0 2px #ccc inset;display:inline-block;line-height:.9em}.launch em
+i{font-weight:bold;display:none;font-family:Verdana,Geneva,sans-serif;font-size:.6em;float:left;width:100%;height:100%;text-align:center}.launch
+em.choiced{border-color:#f30;color:#f30}.launch em.choiced
+i{display:block}.betsetting ul li
+var{width:auto;padding:.2em;background:#fff;border:1px
+solid #ccc;margin:0
+.5em 0 0;cursor:pointer}.betsetting ul li
+var.this{background:#f60;color:#fff;box-shadow:0px 0 2px #C30 inset}.jczq_bet
+select{width:auto;height:1.8em}#fqhm{display:none}.pop_body{position:fixed;width:100%;height:100%;display:block;background:#ccc;opacity:.2;z-index:1000;top:0;left:0;display:none}.pop_con{width:90%;position:fixed;z-index:10000001;background:#333;border-radius:10px;top:50%;left:50%;margin-left:-47%;padding:10px
+2%;text-align:center;display:none;margin-top:-4em}.pop_con
+p{color:#fff;text-align:left;margin:0
+0 8px;font-size:16px}.pop_con
+a{width:auto;padding:0
+10px;height:30px;line-height:30px;background:#f2f2f2;color:#000;border-radius:4px;margin:8px
+8px 0;display:inline-block;font-size:16px}.guoguan{position:fixed;width:92%;left:3%;padding:10px
+1% 20px;top:60px;background:#ccc;border-radius:10px;z-index:10000;display:none}.guoguan
+li{float:left;width:30%;margin:0
+1.5% 10px;display:inline;height:30px;line-height:30px;text-align:center;color:#06c;background:#f2f2f2;font-size:14px;border-radius:4px;cursor:pointer}.guoguan
+li.unselectable{color:#666}.guoguan
+li.selected{color:#fff;background:#f60}.guoguan
+p{float:left;width:100%;text-align:center}.guoguan p
+b{line-height:20px;height:20px;display:inline-block;font-size:16px}.guoguan p
+a{width:100px;height:32px;line-height:32px;text-align:center;display:inline-block;background:#f60;color:#fff;font-size:16px;border-radius:4px;margin:10px
+10px 0}.betting
+dl{padding:0
+10px}.betting dt,.betting
+dd{float:left;width:50%;height:36px;line-height:36px;border-bottom:1px solid #ccc;text-align:center;background:#ccc;font-size:16px}.betting
+dd{background:#fff}.betting dd
+span{float:left;width:50%;text-align:center;overflow:hidden;height:36px}.navdiv{float:left;width:100%;height:50px}.navdiv
+li{float:left;width:50%;height:32px;line-height:32px;text-align:center;background-image:-moz-linear-gradient(center top, #f1f1f1, #ddd);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #f1f1f1 ), color-stop(1, #ddd));font-size:16px;color:#333;cursor:pointer;margin:10px
+0;box-shadow:0 1px 1px #ccc inset}.navdiv
+li.this{background-image:-moz-linear-gradient(center top, #ffcd04, #ff6d00);background-image:-webkit-gradient(linear, left top, left bottom, color-stop(0, #ffcd04 ), color-stop(1, #ff6d00));border-color:#f60;color:#fff;box-shadow:0 1px 1px #f60 inset;font-weight:700}.emailbox{width:320px;margin:60px
+auto 0}.emailbox
+ul{float:left;width:300px;margin:0
+10px;border-radius:5px;background:#fff;padding:50px
+0 200px}.emailbox ul
+li{float:left;width:100%}.emailbox ul li
+input{float:left;width:180px;padding:0
+10px;height:36px;border:1px
+solid #ccc;font:14px/36px "微软雅黑";margin:0
+5px 0 30px;border-radius:5px}.emailbox ul li
+span{float:left;width:auto;font:14px/38px "微软雅黑";color:#999}.emailbox ul li span
+i{float:left;width:14px;height:14px;background:url(http://cdn1.woying.com/img/correct/mwoying/tongg_icon.png) no-repeat 0 0;margin:13px
+5px 11px}.emailbox ul li
+a{float:left;width:202px;height:38px;font:700 18px/38px "微软雅黑";color:#fff;text-shadow:0 1px 1px #ccc;text-align:center;background:#0cc;border-radius:5px;margin:20px
+5px 30px 30px;letter-spacing:10px}.floorbg{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;opacity:.5;z-index:9999}.emailpop{position:fixed;width:300px;height:200px;top:50%;left:50%;margin:-100px 0 0 -150px;background:#fff;border-radius:10px;z-index:10000}.emailpop
+p{float:left;width:100%;padding:10px
+0;font:700 16px/28px "微软雅黑";text-align:center;color:#999;margin-top:25px}.emailpop
+a{float:left;width:110px;height:40px;font:700 18px/40px "微软雅黑";color:#fff;text-align:center;background:#f60;margin:10px
+20px 0 30px;border-radius:4px}.emailpop
+a.last{background:#f90;margin:10px
+0 0}.errorcon{background:#fff}.errorimg{width:100%;margin-top:100px}.header
+a.transform{background:url(http://cdn1.woying.com/img/account/zhuan.png) no-repeat 0 0;background-size:100% 100%;left:auto;right:40px;top:5px;width:28px;height:28px}.PIN_bg{background:#000;opacity:.6;position:fixed;top:0;left:0;width:100%;height:100%;z-index:9999}.PIN_confirm{width:70%;height:220px;position:fixed;top:50%;left:50%;margin:-110px 0 0 -35%;box-shadow:0 0 3px #666;background:#fff;z-index:10000;border-radius:20px}.PIN_confirm
+strong{float:left;width:100%;height:40px;font:500 18px/40px "微软雅黑";color:#fff;text-align:center;background:#c00;border-top-left-radius:20px;border-top-right-radius:20px;letter-spacing:5px;box-shadow:0 0 3px #000;margin-bottom:15px}.PIN_confirm
+p{text-align:center;line-height:40px;font:16px/40px "微软雅黑"}.PIN_confirm p:nth-child(2){padding:0
+20px}.PIN_confirm p
+input{float:left;width:100%;height:40px;line-height:40px;border:1px
+solid #ccc;box-sizing:border-box;color:#333;padding:0
+10px;background:#f7f7f7;margin-top:10px}.PIN_confirm p
+a{width:32%;height:36px;font:18px/36px "微软雅黑";color:#fff;background:#f60;display:inline-block;margin:20px
+10px 10px;border-radius:4px}.PIN_confirm p a:nth-child(2){background:#f90}.copies{width:100%;box-sizing:border-box;padding:.1rem .42rem;border-bottom:1px solid #ccc;border-top:1px solid #ccc}.copies:nth-child(2){margin-top:60px;border-top:none}.copies
+p{width:100%;font:100 .32rem/.54rem "微软雅黑";color:#333;position:relative}.copies p
+var{width:1rem;height:.54rem;display:block;position:absolute;top:0;right:0;background:#f4f4f4;border-radius:.27rem;border:1px
+solid #e6e6e6;box-sizing:border-box}.copies p var
+i{width:.52rem;height:.52rem;background:#fff;position:absolute;top:0;left:0;box-shadow:0 2px 2px #ccc;border-radius:50%}.copies p
+var.clicked{background:#4cd864;border-color:#4cd864}.copies p var.clicked
+i{left:auto;right:0;box-shadow:-2px 2px 2px #666}.copies p
+a{width:.5rem;text-align:center;display:block;height:.54rem;position:absolute;top:0;right:.15rem;font:700 .4rem/.54rem serif;color:#999}.hongbao{padding:7px
+.1rem .1rem;width:100%;display:inline-block;box-sizing:border-box}.hongbao_box{width:100%;background:#ca3136;border-radius:10px;position:relative;overflow:hidden}.first_bg,.second_bg{width:120%;height:4.4rem;border-radius:10px;border-bottom-left-radius:50%;border-bottom-right-radius:50%;background:#e63339;position:absolute;top:0;left:50%;margin-left:-60%;z-index:2}.second_bg{width:140%;margin-left:-70%;background:#c0272c;z-index:1}.hongbao_con{position:relative;z-index:3;width:100%;min-height:8rem}.hongbao_con
+p{float:left;width:100%;text-align:center;color:#fff}.hongbao_con p:first-child{margin-top:.62rem}.hongbao_con p:nth-child(4){padding:.1rem 0}.hongbao_con p
+img{width:1rem;height:1rem;border-radius:50%}.hongbao_con p
+strong{font:.48rem/.64rem "微软雅黑"}.hongbao_con p
+i{font:.24rem/.4rem "微软雅黑";color:#f66266}.hongbao_con p
+span{font:.32rem/.8rem "微软雅黑"}.hongbao_con p
+a{width:1.4rem;height:1.4rem;border-radius:50%;background:#ffa82c;font:700 .36rem/1.4rem "微软雅黑";color:#fff;display:inline-block}.hongbao_con p a
+b{font:700 .6rem/1.4rem serif}.hongbao_con>div{font:.28rem/.48rem "微软雅黑";color:#fcdfa6;margin:0
+.25rem}.hongbao_con > div
+strong{font:.32rem/.6rem "微软雅黑";float:left;width:100%;margin:.2rem 0 0}.register_hb{min-height:10.5rem}.popup_bg{width:100%;height:100%;background:#000;opacity:.6;position:fixed;top:0;left:0;z-index:9999}.result_layer{width:4.8rem;height:2.72rem;z-index:10000;position:fixed;border-radius:.05rem;background:#fff;top:50%;left:50%;margin:-1.35rem auto auto -2.4rem;text-align:center}.result_layer
+div{float:left;width:100%;box-sizing:border-box;margin-top:.7rem;vertical-align:middle;height:1.2rem;padding:0
+.3rem}.result_layer div
+p{font:.32rem/.4rem "微软雅黑"}.result_layer p
+b{color:#f30;font-size:.42rem;font-family:serif;margin:0
+.05rem}.result_layer
+a{float:left;width:50%;font:.32rem/.8rem "微软雅黑";color:#333;border-top:1px solid #ccc}.result_layer a:last-child{color:#f30;border-left:1px solid #ccc;box-sizing:border-box}.result_layer
+a.confirm{border-left:none;width:100%}

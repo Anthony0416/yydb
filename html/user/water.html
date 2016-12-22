@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>夺宝币流水记录</title>
+    <link rel="stylesheet" href="../../css/base/all.css"/>
+    <link rel="stylesheet" href="../../css/user/water.css">
+    <script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body class="has-header">
+    <!--include "../component/header/index.html"-->
+    <div id="content">
+           <!--<div class="list">
+                <p class="top"><span class="name">购买苹果苹果</span><span class="pay">-480夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:19985夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div>
+            <div class="list">
+                <p class="top"><span class="name">购买华为苹果</span><span class="pay">-48000夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:1985夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div>
+            <div class="list">
+                <p class="top"><span class="name">购买苹果华为</span><span class="pay">-4801夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:71995夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div><div class="list">
+                <p class="top"><span class="name">购买苹果理</span><span class="pay">-4860夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:1995夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div><div class="list">
+                <p class="top"><span class="name">购买宝马</span><span class="pay">-4850夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:81995夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div><div class="list">
+                <p class="top"><span class="name">购买奔驰果</span><span class="pay">-97480夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:169955夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div><div class="list">
+                <p class="top"><span class="name">购买苹果苹果</span><span class="pay">-480夺宝币</span></p>
+                <p class="bottom"><span class="balance">余额:19905夺宝币</span><span class="time">1999-09-09 15:15:15</span></p>
+            </div>-->
+    </div>
+    <script>
+        $.ajax({
+            type:"get",
+            dataType:"jsonp",
+            url:gb.ajaxUrl + "r=user/user-money",
+            success: function (mes) {
+                console.log(mes)
+                if(mes.code == -1) {
+                	app.ui.noData({id:'content'})
+                } else {
+                	var s = "";
+	                for(i in mes.data){
+	                    var _d = mes.data[i];
+	                    if(_d.type == 2 ||_d.type == 3){
+	                        _d.name = '购买'+ _d.name;
+	                        _d.coin = "-" + _d.coin +'';
+                            var aaa = "orange"
+	                    }else if(_d.type == 0||_d.type ==1||_d.type ==4||_d.type==5||_d.type==6){
+	                        _d.coin = '+'+ _d.coin;
+                            var aaa = "green";
+	                    }
+	                    s +=  '<div class="list">'
+	                           +'<p class="top"><span class="name test-ellipsis '+aaa+'">'+ _d.name +'</span><span class="pay '+aaa +'">'+ _d.coin +'</span></p>'
+	                           +' <p class="bottom"><span class="balance">&nbsp;</span><span class="time1">'+ _d.create_on +'</span></p>'
+	                       +'</div>'
+	                }
+	                $('#content').append(s);
+	                $(".name").width($(".list").width()-170);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

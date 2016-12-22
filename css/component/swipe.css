@@ -1,0 +1,51 @@
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+#swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+#swipe-wrap > figure {
+	float: left;
+	width: 100%;
+	position: relative;
+	margin: 0;/* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */  
+	transition-timing-function: cubic-bezier(.1,.56,.07,.98);
+}
+#slider {  
+	width: 100%;/* 设置最大的宽度 */  
+	height: 1.4rem;
+	margin: 0px auto; /* 居中对齐 */
+	position: relative;  
+}  
+
+/*底边小点的设置*/
+#position {	
+	height: 10px;
+	text-align: center;
+	list-style: none;
+	padding: 0;
+	position: absolute;
+	top: 1.27rem;
+	left: 50%;
+	transform: translateX(-50%);
+}
+
+#position li {
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: rgba(255,255,255,0.4);
+	margin: 0 3px;
+	cursor: pointer;
+	float: left;
+}
+#position li.on {
+    background-color: #F4681E;
+} 
+.piuture img{
+	width: 100%;
+	height: 1.4rem;
+}

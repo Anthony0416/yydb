@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>收货地址</title>
+		<!--<link rel="stylesheet" href="../../css/base/base.css" />
+		<link rel="stylesheet" href="../../css/base/common.css" />-->
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/address.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css"/>
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="has-header">
+		<div id="body">
+		<!--include "../component/header/index.html"-->
+			<div id="content">
+				<!--<div class="address defnault">-->
+					<!--<p class="p1">-->
+						<!--<span class="name">name</span>-->
+						<!--<span class="phone">12345678912</span>-->
+					<!--</p>-->
+					<!--<p class="p2">X省X市X路XXX</p>-->
+					<!--<div class="choose">-->
+						<!--<span id="del">删除</span>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="address">-->
+					<!--<p class="p1">-->
+						<!--<span class="name">name</span>-->
+						<!--<span class="phone">12345678912</span>-->
+					<!--</p>-->
+					<!--<p class="p2">X省X市X路XXX X省X市X路XXXX省X市X路XXX</p>-->
+					<!--<div class="choose">-->
+						<!--<span id="moren">设为默认地址</span>&nbsp;|-->
+						<!--<span id="del">删除</span>-->
+					<!--</div>-->
+				<!--</div>-->
+				<!--<div class="address">-->
+					<!--<p class="p1">-->
+						<!--<span class="name">name</span>-->
+						<!--<span class="phone">12345678912</span>-->
+					<!--</p>-->
+					<!--<p class="p2">X省X市X路XXX X省X市X路XXXX省X市X路XXX</p>-->
+					<!--<div class="choose">-->
+						<!--<span id="moren">设为默认地址</span>&nbsp;|-->
+						<!--<span id="del">删除</span>-->
+					<!--</div>-->
+				<!--</div>-->
+
+			</div>
+			<div id="btn">
+				<button onclick="location='add_address.html?type=0'">添加收货地址</button>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var obj = {};
+			init();
+			function init(){
+				$.ajax({
+					type:"get",
+					url:gb.ajaxUrl + "r=user/show-address",
+					dataType:"jsonp",
+					success:function(msg){
+						if(msg.code == "0"){
+							msg = msg.data;
+							spelldata(msg)
+						}else{
+//							$.dialog({
+//								content:msg.msg,
+//								title:"alert",
+//								time:2000
+//							})
+							app.ui.noData({id:'content'})
+						}
+					}
+				});
+			}
+			function spelldata(msg){
+				var s = "";
+				var a = "";
+				for(i in msg){
+					var _d =msg[i];
+					if(_d.is_default){
+						a = '<div class="address default">'+
+								'<p class="p1">'+
+									'<span class="name">'+ _d.name +'&nbsp;&nbsp;</span>'+
+									'<span class="phone">'+ _d.phone +'</span>'+
+								'</p>'+
+								'<p class="p2">'+ _d.province + _d.city + _d.county + _d.street +'</p>'+
+								'<div class="choose">'+
+									'<span id="del" address_id="'+ _d.id +'">删除</span>&nbsp;|&nbsp;'+
+									'<span id="revise" address_id="'+ _d.id +'" address_name="'+ _d.name +'" address_phone="'+ _d.phone +'" address_province="'+ _d.province +'" address_city="'+ _d.city +'" address_county="'+ _d.county +'" address_street="'+ _d.street +'" address_default="'+ _d.is_default +'" address_code="'+ _d.code +'">修改</span>'+
+								'</div>'+
+							'</div>'
+					}else{
+						s += '<div class="address">'+
+								'<p class="p1">'+
+									'<span class="name">'+ _d.name +'&nbsp;&nbsp;</span>'+
+									'<span class="phone">'+ _d.phone +'</span>'+
+								'</p>'+
+								'<p class="p2">'+ _d.province + _d.city + _d.county + _d.street +'</p>'+
+								'<div class="choose">'+
+									'<span id="moren" address_id="'+ _d.id +'">设为默认地址</span>&nbsp;|&nbsp;'+
+									'<span id="del" address_id="'+ _d.id +'">删除</span>&nbsp;|&nbsp;'+
+									'<span id="revise" address_id="'+ _d.id +'" address_name="'+ _d.name +'" address_phone="'+ _d.phone +'" address_province="'+ _d.province +'" address_city="'+ _d.city +'" address_county="'+ _d.county +'" address_street="'+ _d.street +'" address_default="'+ _d.is_default +'" address_code="'+ _d.code +'">修改</span>'+
+								'</div>'+
+							'</div>'
+					}
+				}
+				$("#content").append(s);
+				$("#content").prepend(a);
+			}
+				
+				$("#content").on("click","#moren",function(){
+					obj.address_id = $(this).attr("address_id");
+					$.ajax({
+						type:"get",
+						url:gb.ajaxUrl + "r=user/set-default",
+						data:obj,
+						dataType:"jsonp",
+						success:function(mes){
+							if(mes.code == "0"){
+								$.dialog({
+									content:'默认地址设置成功!',
+									title:"ok",
+									ok:function(){
+										location.reload(true)
+										
+									}
+								})
+							}else{
+								$.dialog({
+									content:mes.msg,
+									title:"alert",
+									time:2000
+								})
+							}
+						}
+					});
+				})
+				$("#content").on("click","#del",function(){
+					obj.address_id = $(this).attr("address_id");
+					$.dialog({
+							content : '确认删除该地址？',
+							title: null,						
+							okText: '确定',
+							ok : function() {
+								del();
+							},
+							cancelText : '取消',
+					        cancel : function() {}
+						});
+					
+					function del(){						
+						$.ajax({
+							type:"get",
+							url:gb.ajaxUrl + "r=user/del-address",
+							data:obj,
+							dataType:"jsonp",
+							success:function(mes){
+								if(mes.code == "0"){
+									$.dialog({
+										content:'地址删除成功!',
+										title:"ok",
+										ok:function(){
+											location.reload(true)
+										}
+									})
+								}else{
+									$.dialog({
+										content:mes.msg,
+										title:"alert",
+										time:2000
+									})
+								}
+							}
+						});
+					}
+				})
+				
+				$("#content").on("click","#revise",function(){
+					var obj = {
+						address_id:$(this).attr("address_id"),
+						address_name:$(this).attr("address_name"),
+						address_phone:$(this).attr("address_phone"),
+						address_province:$(this).attr("address_province"),
+						address_city:$(this).attr("address_city"),
+						address_county:$(this).attr("address_county"),
+						address_street:$(this).attr("address_street"),
+						address_default:$(this).attr("address_default"),
+						address_code:$(this).attr("address_code"),
+						type:1//1表示修改0表示添加
+					}
+					window.location.href="add_address.html?"+
+						"type=" +obj.type+"&"+
+						"address_id=" +obj.address_id+"&"+
+						"address_name=" +obj.address_name+"&"+
+						"address_phone=" +obj.address_phone+"&"+
+						"address_province=" +obj.address_province+"&"+
+						"address_city=" +obj.address_city+"&"+
+						"address_county=" +obj.address_county+"&"+
+						"address_street=" +obj.address_street+"&"+
+						"address_default=" +obj.address_default+"&"+
+						"address_code=" +obj.address_code;
+				})
+		</script>
+	</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>分享</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<script src="../../js/quote/all.js"></script>
+		<style>
+			body {
+				padding: 0;
+			}
+			/*背景*/
+			
+			#page {
+				background-image: url(../../img/huodong/share.jpg);
+				background-size: 3.75rem 6.03rem;
+				height: 6.03rem;
+				position: relative;
+			}
+			/*中奖信息*/
+			
+			#ifo {
+				width: 2.45rem;
+				position: absolute;
+				top: 2.07rem;
+				left: 0.64rem;
+			}
+			
+			#ifo p {
+				color: white;
+				font-size: 0.16rem;
+				text-align: center;
+				overflow: hidden;
+				/*自动隐藏文字*/
+				text-overflow: ellipsis;
+				/*文字隐藏后添加省略号*/
+				white-space: nowrap;
+				/*强制不换行*/
+			}
+			
+			.img {
+				width: 1.2rem;
+				height: 1.2rem;
+				margin: 0.05rem 0 0 0.6rem;
+				border-radius: 3px;
+			}
+			
+			.des {
+				position: absolute;
+				top: 4.2rem;
+				left: 0;
+				width: 3.75rem;
+				text-align: center;
+				font-size: 0.14rem;
+			}
+			.erweima {
+				width: 0.9rem;
+				height: 0.9rem;
+				position: absolute;
+				right: 0.1rem;
+				top: 4.95rem;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id='page'>
+			<div id='ifo'>
+				<p class='win_ifo'>
+					<span class='user_name'>{{username}}</span> 在获宝网购买了<span>{{number}}</span>人次
+				</p>
+				<p class='prizes_ifo'>
+					<span class='prizes'>{{prizes}}</span>
+				</p>
+				<img class='img' :src="img" />
+			</div>
+			<div class='des'>
+				时时彩唯一指标，公正公开透明<br/> 新人红包，每日转盘，更多玩法尽在获宝网！
+			</div>
+			<img class='erweima' src="../../img/huodong/getqrcode.jpg" />
+		</div>
+		<script src="../../js/quote/vue.js"></script>
+		<script type="text/javascript">
+			//rem
+			(function() {
+				var t;
+
+				function initHtmlFont() {
+					//var maxWidth = 750;
+					var windowWidth = window.innerWidth || document.body.clientWidth;
+					//windowWidth = (windowWidth > maxWidth ? maxWidth : windowWidth);
+					document.documentElement.style.fontSize = 100 * (windowWidth / 375) + 'px';
+				}
+
+				window.onresize = function() {
+					clearInterval(t);
+					t = setTimeout(function() {
+						initHtmlFont();
+					}, 250)
+				}
+				initHtmlFont();
+			})()
+		</script>
+		<script src="../../js/quote/zepto.js"></script>
+		<script>
+			//数据绑定
+			var vm = new Vue({
+				el: '#page',
+				data: {
+					username: '',
+					prizes: '',
+					img: '',
+					number:'',
+				}
+			})
+			
+			var trade_id = gb.url.getParam('trade_id');
+			$.ajax({
+				type: "get",
+				url: gb.ajaxUrl + "r=share/buy-details",
+				dataType: 'jsonp',
+				data: {
+					trade_id: trade_id
+				},
+				success: function(re) {
+					console.log(re)
+					var _d = re.data;
+					vm.img = _d.img;
+					vm.prizes = _d.name;
+					vm.username = _d.username;
+					vm.number = _d.number;
+				},
+				error: function(e) {
+					console.log(e);
+				}
+			});
+			
+		</script>
+	</body>
+
+</html>

@@ -1,0 +1,51 @@
+<div class="input-group">
+	<input type="number" maxlength="5" class="iden_code" placeholder="验证码" />
+	<a class="send btn gain">获取验证码</a>
+</div>
+
+<script>
+	var mark = 1;
+	$(".gain").click(function() {
+		
+		var phone_num = $("#phoneNum").val();
+		//判断手机号以及格式是否正确
+		if(!(/^1[34578]\d{9}$/.test(phone_num))) {
+			$.dialog({
+				content: '请填写正确的手机号',
+				title: "alert",
+				time: 2000
+			});
+			return;
+		}
+		if(mark) {
+			mark = 0;
+			var num = 60;
+			var interval;
+			var _this = this;
+			$(_this).text("重新发送(60)秒").addClass("grey").removeClass("gain");
+			interval = setInterval(function() {
+				num--;
+				$(_this).text("重新发送(" + num + ")秒");
+				if(num <= 0) {
+					mark = 1;
+					$(_this).removeClass("grey").text("获取验证码").addClass("gain");
+					clearInterval(interval);
+				}
+			}, 1000);
+		}
+		
+		$.ajax({
+			type: "get",
+			url: gb.ajaxUrl+"r=user/send-code",
+			dataType:'jsonp',
+			data: {phone:phone_num},
+			success:function(re) {
+				console.log(re)
+			},
+			error:function(e) {
+				console.log(e)
+			}
+		});
+		$(".iden_code").focus(); //点击获取验证码按钮，验证码框获得焦点
+	});
+</script>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../../dist/css/goods/search.css" />
+		<link rel="stylesheet" href="../../../dist/css/user/kf-details.css" />
+		<script type="text/javascript" src="../../js/quote/zepto.js" ></script>
+		<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>
+		<script type="text/javascript" src="../../js/quote/rem.js" ></script>
+	</head>
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href='javascript:history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>问答详情</span>
+			</div>
+			<div class="details-body">
+				<div class="box-question">
+					<div class="Q">Q</div>
+					<div class="question">
+						夺宝币是否可以提现
+					</div>
+				</div>	
+				<div class="box-answer">
+					<div class="A">A</div>
+					<div class="answer">
+						很抱歉，夺宝币无法提现，请您根据实际情况合理充值。
+					</div>
+				</div>
+				<div class="evaluated">
+					<p>本次解答是否对您有帮助</p>
+					<div class="choice">
+						<a class="positive ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_help.png"/>
+							有帮助
+						</a>
+						<a class="negative ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_unhelp.png" />
+							没帮助
+						</a>
+					</div>
+					<div class="j-rusult">感谢您的反馈，小宝会继续努力哒！</div>
+				</div>
+				<!--<div class="service">
+					<p>
+						需要更多帮助?
+						<a>
+							<img src="http://mimg.127.net/p/crm/20160811/img/contact.png" />
+						</a>
+					</p>
+					
+				</div>-->
+			</div>
+		</div>	
+	</body>
+	<script src="../../../dist/js/quote/all.js"></script>
+	<script type="text/javascript">
+		$('.positive').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+		$('.negative').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+	</script>
+</html>

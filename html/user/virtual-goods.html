@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>虚拟商品兑换</title>
+    <link rel="stylesheet" href="../../css/base/all.css"/>
+    <link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css" />
+    <script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+    <style>
+        body{
+            background-color: #FFFFFF;
+        }
+        #content {
+        	margin-top: 0.5rem;
+        }
+        .accon{
+            padding-left: 0.2rem;
+            margin-top:0.3rem;
+        }
+        .name{
+            color: #000000;
+        }
+        .account{
+            height:0.3rem;
+            border: 1px solid #dddddd;
+            font-size: 0.16rem;
+        }
+        .shuoming{
+            font-size: 0.16rem;
+            color: #000000;
+        }
+        .rule{
+            /*position: absolute;*/
+            /*bottom: 0.1rem;*/
+            /*border-top: 1px solid #dddddd;*/
+            color: #666666;
+            margin-top: 0.1rem;
+            text-align: left;
+            padding: 0.2rem 0.2rem;
+        }
+        .btn{
+            position: absolute;
+            height: 30px;
+            line-height: 30px;
+            display: inline-block;
+            text-align: center;
+            width: 80%;
+            margin-left: 10%;
+            background-color: #ff6b00;
+        }
+        .img{
+            margin-top:0.25rem !important;
+            height: 2.5rem;
+            width: 2.5rem;
+            margin: 0 auto;
+        }
+        .img img{
+            width:2.5rem;
+            height:2.4rem;
+        }
+        h1{
+            padding-left:0.2rem;
+            font-size: 0.18rem;
+        }
+    </style>
+</head>
+<body>
+<!--include "../component/header/index.html"-->
+    <div id="content">
+        <div class="img"></div>
+        <h1>这个是商品啊</h1>
+        <div class="accon">
+            <p class="name">兑换账号:&nbsp;<input class="account" type="text"/></p>
+        </div>
+        <p class="rule"><span class="shuoming">兑换说明:</span><br/>&nbsp;&nbsp;1.本页面为虚拟商品兑换页面,提供包括爱奇艺VIP.乐视会员.优酷会员.QQ会员.Q币等的兑换服务。<br/>
+            &nbsp;&nbsp;2.兑换中心发货时间为兑换后T+2个工作日.
+        </p>
+        <div class="btn">确认兑换</div>
+    </div>
+<script>
+    //获取页面跳转参数
+    var periods =decodeURI(gb.url.getParam('periods'));
+    var img =decodeURI(gb.url.getParam('img'));
+    var name =decodeURI(gb.url.getParam('name'));
+    console.log(periods)
+    console.log(img)
+    console.log(name)
+    //参数加载
+    $(".img").append("<img src='"+ img +"'/>");
+    $("h1").text(name);
+    $(".btn").click(function(){
+        if($(".account").val()){
+            $.ajax({
+                url: gb.ajaxUrl + "r=user/delivery",
+                dataType: "jsonp",
+                data: {
+                    account:$(".account").val(),
+                    periods: periods
+                },
+                success: function(mes) {
+                    console.log(mes)
+                    if(mes.code == "-1") {
+                        $.dialog({
+                            content: mes.msg,
+                            title: "alert",
+                            time: 2000
+                        });
+                    } else {
+                        $.dialog({
+                            content: '申请成功，我们将尽快为您处理',
+                            title: "ok",
+                            time: 2000
+                        });
+                    }
+                }
+            });
+        }else{
+            $.dialog({
+                content: '兑换账号不能为空',
+                title: "alert",
+                time: 2000
+            });
+        }
+    })
+</script>
+</body>
+</html>

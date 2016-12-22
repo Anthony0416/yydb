@@ -1,0 +1,66 @@
+#money li,
+#pay p {
+	height: 30px;
+	line-height: 30px
+}
+
+#pay,
+#pay p {
+	border-bottom: 1px solid #dcdcdc
+}
+
+#chk,
+#chk button,
+#money {
+	width: 3.5rem
+}
+
+#money {
+	height: 100px;
+	margin: 0.5rem auto 20px
+}
+
+#money p {
+	font-family: 黑体;
+	margin-bottom: 10px
+}
+
+#money li {
+	display: inline-block;
+	width: 1.03rem;
+	text-align: center;
+	background-color: #fff;
+	border: 1px solid #dcdcdc;
+	border-radius: 3px;
+	margin: 5px 3px
+}
+
+#pay p,
+#pay_way {
+	padding: 0 20px;
+	background-color: #fff
+}
+
+#pay p {
+	border-top: 1px solid #dcdcdc
+}
+
+#pay_way input {
+	vertical-align: middle;
+	height: 25px
+}
+
+#chk {
+	margin: 30px auto 0
+}
+
+#chk button {
+	height: 40px;
+	background: #ff6b00;
+	border-width: 0;
+	font-size: 16px!important;
+	color: #FFF;
+	border-radius: 3px;
+	cursor: pointer;
+	outline: 0
+}

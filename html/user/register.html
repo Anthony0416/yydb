@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>用户注册</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/base/form.css" />
+		<!--<link rel="stylesheet" href="../../css/user/register.css" />-->
+		<link rel="stylesheet" href="../../css/component/zepto.alert.css" />
+		<link rel="stylesheet" href="../../css/component/verificationCode.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/user/browser.js"></script>
+		
+		<style>
+			#footer{
+				text-align: center;
+			}
+			#hint {
+				color: #655C5C;
+				margin-top: .07rem;
+				text-align: right;
+			}
+		</style>
+	</head>
+	<body class="has-header">		
+		<!--include "../component/header/index.html"-->
+		<div class="form-wrap">
+			<ul class="form-ul">
+				<!--<li>
+					<input id="userName" maxlength="10" placeholder="请输入用户名"/>		
+				</li>-->
+				<li>					
+					<input id="phoneNum" type="tel" maxlength="11" placeholder="请输入手机号"/>		
+				</li>
+				<li>					
+					<input id="password" type="password" placeholder="请输入密码"/>		
+				</li>
+				<li>					
+					<input id="passwordChk" type="password" placeholder="再次输入密码"/>			
+				</li>
+			</ul>	
+			<p id="hint">密码至少 6 位数字或字母</p>
+			<!--include "../component/verificationCode/SMSCode.html"-->
+			<div id="register-button" class="form-btn-wrap">
+				<a class="btn">快速注册</a>
+			</div>
+			
+			<p id="footer">
+				<span>注册即代表同意[获宝网]<a href="clause.html">服务条款</a></span>
+			</p>
+		</div>
+		
+		
+		<script src="../../js/quote/md5.js"></script>
+		<script type="text/javascript" src="../../js/quote/zepto.alert.js" ></script>
+		<script type="text/javascript" src="../../js/user/register.js" ></script>		
+	</body>
+</html>

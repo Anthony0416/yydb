@@ -1,0 +1,37 @@
+.w_shareItem{
+	width: 3.33rem;
+	height: 143px;
+	padding: 10px 0.1rem;
+	border: 1px solid #666;
+	margin: 50px 0.1rem 0;
+}
+
+/*图文说明*/
+.abbr{
+	width: 3.33rem;
+	height: 90px;
+	font-size: 12px;
+	color: #666;
+	position: relative;
+}
+.phot{
+	width: 0.9rem;
+	height: 90px;
+	
+}
+.p_text{
+	width: 2.33rem;
+	height: 90px;
+	padding-left: 0.1rem;
+	margin-top: 3px;
+	font-size: 12px;
+	color: #999;
+    position: absolute;
+	right: 0;
+	top: 0.03rem
+}
+.phot img{
+	width: 0.9rem;
+	height: 90px;
+}
+

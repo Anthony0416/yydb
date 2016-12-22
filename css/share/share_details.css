@@ -1,0 +1,30 @@
+.m_user_shareList{
+	width:100%;
+	margin-top:50px;
+	
+}
+.w_shareDetail{
+	padding: 10px 0.1rem;
+	border: 1px solid #dcdcdc;
+	margin: 0.1rem;
+}
+.goods_ifo{
+	width: 3.33rem;
+	height: 95px;
+	padding: 6px 0;
+	margin-bottom: 10px;
+	background-color: #F4F4F4;
+	font-size: 12px;
+}
+.mation{
+
+	color: #0079fe;
+}
+p img{
+	width: 3.33rem;
+	height: 2.45rem;
+	margin-bottom: 10px;
+}
+.m_text{
+	margin-bottom: 10px;
+}

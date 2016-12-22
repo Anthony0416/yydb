@@ -1,0 +1,40 @@
+#ifo {
+	margin: 50px 10px 10px 10px;
+	border-top: 1px solid gainsboro;
+}
+#ifo>div{
+	padding: 10px 5px;
+	border-bottom: 1px solid gainsboro;
+}
+.camera-area,#ID,.arr {
+	float: right;
+}
+.thumb img,.upload-progress {
+	
+}
+
+/*nicheng*/
+#ID {
+	margin-top: -8px;
+	width: 234px;
+	height: 34px;
+}
+#address .arr {
+	display: inline-block;
+}
+.arr {
+	margin: 5px;
+}
+#input {
+	width: 2rem;
+	height: 25px;
+	background-color: red;
+	color: white;
+	margin: 20px auto 0;
+	border-radius: 5px;
+	text-align: center;
+}
+#input span {
+	font-size: 18px;
+	line-height: 25px;
+}

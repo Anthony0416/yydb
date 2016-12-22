@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>充值记录</title>
+		<!--<link rel="stylesheet" href="../../css/base/base.css" />
+		<link rel="stylesheet" href="../../css/base/common.css" />-->
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/recharge_records.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css"/>
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>		
+	</head>
+	<body>
+		<!--include "../component/header/index.html"-->
+			<div id="content">
+				<!--<div>
+					<p>支付流水：<b>132468795653546</b></p>
+					<p>创建时间：<b>2016:06:12 13:10:20</b></p>
+					<p>充值额度：
+						<b>50元</b>
+						<span class="result red">充值成功！</span>
+					</p>
+					
+				</div>
+				<div>
+					<p>支付流水：<b>132468795653546</b></p>
+					<p>创建时间：<b>2016:06:12 13:10:20</b></p>
+					<p>充值额度：
+						<b>50元</b>
+						<span class="result red">充值成功！</span>
+					</p>
+					
+				</div>-->
+			</div>
+		<!--</div>-->
+	
+	<script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		$.ajax({
+			type:"get",
+			url:gb.ajaxUrl + "r=user/recharge-record",
+			dataType:"jsonp",
+			success:function(mes){
+				console.log(mes)
+				if(mes.code == "-1"){
+//					$.dialog({
+//						content:mes.msg,
+//						title:"alert",
+//						time:2000
+//					})
+					app.ui.noData({id:'content'})
+				}else{
+					spelldata(mes.data.data)
+				}
+			},
+			error:function(e){
+			}
+		});
+		function spelldata(mes){
+			console.log(mes)
+				var s = "";
+				for(i in mes){
+					var _d = mes[i];
+					if(_d.status == 1){
+						_d.status ="等待充值"
+					}else if(_d.status == 2) {
+						_d.status = "充值成功"
+					} else {
+						_d.status = "订单关闭"
+					}
+					s += '<div>'+
+							'<p>支付流水：<b>'+ _d.trade_no +'</b></p>'+
+							'<p>充值时间：<b>'+ _d.create_on +'</b></p>'+
+							'<p>充值额度：'+
+								'<b class="red">'+ _d.money +'元</b>'+
+								'<span class="result red">'+ _d.status +'</span>'+
+							'</p>'+
+						'</div>'
+				}
+				$("#content").append(s);
+			}
+		
+	</script>
+	</body>
+</html>

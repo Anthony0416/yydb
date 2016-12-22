@@ -1,0 +1,297 @@
+body{
+	padding-bottom: 0;
+}
+b{
+	color: #0079fe;
+}
+
+.goods-wrap{
+	width: 100%;
+}
+#content {
+	background: none;
+}
+.all-goods{
+	box-sizing: border-box;
+	margin-top: 0.1rem;
+	background-color: white;
+	position: relative;
+}
+.all-goods .good-item{		
+	padding: .1rem;
+	font-size: 0;
+	position: relative;
+	border-bottom: 1px dashed #F1F1F1;
+}
+.all-goods-img{
+	width: 26%;
+	text-align: center;
+	overflow: hidden;
+	position: relative;
+	height: 1rem;
+}
+.all-goods-img img {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	margin-left: -.45rem;
+	margin-top: -.45rem;
+	width: .9rem;
+	height: .9rem;
+	vertical-align: initial;	
+}
+.all-goods-info{
+	margin-left: 2%;
+	width: 70%;
+	vertical-align: top;
+	position: relative;
+	
+}
+.luckstatue{
+	position: absolute;
+	width: 1.050rem;
+	height: .85rem;
+	right: 0.05rem;
+}
+.zhong{
+	background: url(../../../dist/img/user/state.png)no-repeat -0.054rem 0.105rem;
+	background-size: 2.5rem;
+	width: 0.70rem;
+	height: 0.85rem;
+	right: 0.10rem;
+}
+.weikai{
+	background: url(../../../dist/img/user/state.png)no-repeat -0.81rem -0.015rem;
+	background-size: 2.5rem;
+	height: .75rem;
+	width: 0.900rem;
+	right: 0.02rem;
+	-webkit-transform: rotate(10deg);
+	transform: rotate(-10deg);
+}
+.buzhong{
+	background: url(../../../dist/img/user/state.png)no-repeat -1.7rem 0.080rem;
+	background-size: 2.5rem;
+	width: .85rem;
+}
+.all-goods-info-name{
+	height: .32rem;	
+	line-height: .32rem;
+	width: 95%;
+}
+.box-p{
+	display: inline-block;
+	width: 70%;
+	background: #0000FF;
+}
+.all-goods-info-introduce{
+	height: .24rem;	
+	color: #999;
+
+}
+.all-goods-info-progressBar{
+	height: .33rem;	
+	margin: .03rem .55rem 0 0;
+}
+.jindutiao{
+	width: 100%;
+	position: relative;
+	height: .05rem;	
+	border-radius: 5px;
+	background-color: #efeeee;
+	margin-bottom: .05rem;
+}	
+.color{
+    border-radius: 4px;
+    background: linear-gradient(90deg,#FFCB3D,#FF8533);
+}
+.all-goods-info-text-2{
+	height: .18rem;
+	font-size: .12rem;
+	color: #b0b0b0;
+}
+.residue-right,.chakan{
+	float: right;
+	color: #F56A00;
+}
+.residue-right {
+	color: #999;
+}
+/*.chakan{
+	position: absolute;
+	bottom: -.1rem;
+	right: 0;
+	padding: .1rem;
+}*/
+.all-goods-info-text-2 span:nth-child(2){
+	margin-left: .05rem;
+}
+.luck{
+	height: 1.3rem;
+}
+/*幸运记录按钮*/
+.check {	
+	height: 0.4rem;
+	margin: 0 auto;
+	line-height: 0.4rem;
+	overflow: hidden;
+}
+.check span{
+	box-sizing: border-box;
+	display: inline-block;
+	width: 50%;
+	text-align: center;
+	color: #F56A00;
+	border-right:1px dashed #F1F1F1;
+}
+.check span:active{
+	background: rgba(197,197,197,.5)
+}
+.check span:last-child{
+	border: 0;
+}
+
+.btn {
+	font-size: 14px;
+	padding: 0.05rem 0.1rem;
+	margin: 0 0.4rem;
+}
+.note {
+	text-align: center;
+	color: gray;
+}
+
+/*公众号分享*/
+.share {
+	display: none;
+	width: .33rem;
+	height: .33rem;
+	line-height: .33rem;
+	text-indent: 1.48rem;
+	/*text-align: center;*/
+	background: #f3f0ee;
+	color: #968b8b;
+	position: absolute;
+	right: -.05rem;
+	top: .02rem;
+	background: url(../../img/user/my-share.png) no-repeat;
+	background-size: .19rem;
+	background-position: 0 .07rem;
+}
+
+#shareBg {
+	position: fixed;
+	z-index: 1000;
+	width: 100%;
+	height: 100%;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background: rgba(0,0,0,.5);
+	display: none;
+}
+#guide {
+	position: absolute;
+	display: block;
+	top: 0.05rem;
+	right: 0.01rem;
+}
+
+#guide img {
+  width: 2.1rem;
+  height: 1.5rem;
+}
+
+/*app分享*/
+#cover {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	z-index: 100000;
+	top: 0;
+	left: 0;
+	background: transparent;
+	display: none;
+}
+#sharePage {
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, .5);
+	position: fixed;
+	z-index: 999;
+	top: 0;
+	left: 0;
+	display: none;
+}
+
+#sharePage div {
+	background: #fff;
+	position: absolute;
+	bottom: .2rem;
+	width: 88%;
+	left: 50%;
+	transform: translateX(-50%);
+	display: inline-block;
+}
+
+/*分享按钮*/
+
+#cancel {
+	height: 0.45rem;
+	line-height: 0.45rem;
+	text-align: center;
+	border-top: 1px solid #CDCACA;
+	border-radius: 6px;
+}
+#cancel:active {
+	background: #F1EEEC;
+}
+
+#shareItem {
+	bottom: 0.65rem !important;
+	height: 1.5rem;
+	font-size: 0;
+	border-radius: 8px;
+	margin-bottom: 0.1rem;
+}
+
+#shareItem ul {
+	width: 100%;
+	padding: .35rem .25rem;
+	-webkit-box-sizing: border-box;
+	box-sizing: border-box;
+	text-align: center;
+}
+
+#shareItem li:before {
+	content: "";
+	display: inline-block;
+	width: 0.55rem;
+	height: 0.55rem;
+	background: url(../../img/user/quick_login.png) no-repeat;
+	background-size: 2.6rem;
+	background-position: -0.08rem -0.08rem;
+}
+
+#shareItem li {
+	width: 33.3%;
+	text-align: center;
+	display: inline-block;
+	font-size: 14px;
+	cursor: pointer;
+}
+
+#shareItem li span {
+	display: block;
+}
+
+.moment:before {
+	background-position: -0.72rem -0.08rem !important;
+}
+
+#body.wx .wx {
+	display: block;
+}
+#body.app .app {
+	display: block;
+}

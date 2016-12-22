@@ -1,0 +1,66 @@
+#box-every{
+	margin: 0 auto;
+	margin-top: 40px;
+	padding: 5px 10px;
+}
+.box-every-records{
+	width: 100%;
+	/*height: 147px;*/
+	margin-bottom: 5px;
+	border: 1px solid #d5d5d5;
+	font-size: 12px;
+    color: #525252;
+}
+.records-head{
+	width: 100%;
+	height: 22px;
+	line-height: 22px;
+	background: #e7e7e7;
+    display: block;
+}
+.records-head>p{
+	padding-left: 10px;
+}
+.records-body{
+	/*width: %;*/
+	/*height: 110px;*/
+	padding: 5px 10px 10px 10px;
+	position: relative;
+	background: white;
+}
+.favicon{
+	height: 50px;
+	width: 50px;
+	margin-right: 10px;
+	margin-top: 5px;
+	display: inline-block;
+	vertical-align: top;
+}
+.favicon>img{
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+}
+.records-details{
+	width: 80.3%;
+	/*height: 100%;*/
+	font-size: 12px;
+    color: #525252;
+    display: inline-block;
+    /*position: absolute;
+    top: 0px;*/
+}
+.records-details>p{
+	height: 22px;
+	line-height: 22px;
+	margin-left: 5px;
+}
+.records-details-name{
+	color: #0079fe;
+}
+.records-details-ip{
+	color: #528d00;
+}
+.records-details-num,.records-details-num2{
+	color: #db3652;
+}

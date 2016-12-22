@@ -1,0 +1,67 @@
+#verification {
+	font-size: .16rem;
+	margin-top: .1rem;
+	margin-bottom: .1rem;
+	color: #655C5C;
+}
+
+#input1 {
+	width: 1.75rem;
+	height: .35rem;
+	line-height: .35rem;
+	font-size: .16rem;
+	padding-left: .1rem;
+	border: 1px solid #d5d5d5;
+}
+
+#checkCode {
+	width: 1rem;
+	height: .35rem;
+	line-height: .35rem;
+	font-size: .16rem;
+	padding-left: .1rem;
+	margin-left: .3rem;
+	background: #F1EEbC;
+	color: #1E90FF;
+	text-align: center;
+	letter-spacing: .08rem;
+}
+
+.code {
+	font-family: Arial;
+	font-style: italic;
+	color: Red;
+	border: 0;
+	padding: 2px 3px;
+	letter-spacing: 3px;
+	font-weight: bolder;
+}
+
+.unchanged {
+	border: 0;
+}
+
+/*短信验证码*/
+.input-group {
+	height: .3rem;
+	margin-top: .1rem;
+}
+.iden_code {
+	height: 100%;
+	padding-left: .1rem;
+  font-size: .16rem;
+	width: 1.6rem;
+}
+.send {
+	display: inline-block;
+	height: .35rem;
+	line-height: .35rem;
+	font-size: .15rem;
+	text-align: center;
+	width: 1.25rem;
+	float: right;
+	border-radius: 4px;
+}
+.send.grey {
+	background: #c7bcbc;
+}

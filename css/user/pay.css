@@ -1,0 +1,97 @@
+/*地址*/
+.add{
+	margin-top: .50rem;
+	margin-bottom: 10px;
+	width: 100%;
+	height: .40rem;
+	background: white;
+/*	border: 1px sold #999999;*/
+	position: relative;
+}
+.append{
+	width: 80px;
+	height: .40rem;
+	font-size: 13px;
+	text-align: center;
+	line-height: .40rem;
+	margin-left: 15px;
+}
+.arrow-right{
+	left: 3.45rem;
+	border-color: gainsboro;
+}
+/*支付方式*/
+.payMent{
+	background: white;
+}
+.payName{
+	display: inline-block;
+	width: 100%;
+	height: .40rem;
+	font-size: 13px;
+	border-bottom: 1px solid #D5D5D5;
+	line-height: .40rem;
+	padding-left: 27px;
+	position: relative;
+}
+.yuan{
+	display: inline-block;
+	width: 13px;
+	height: 13px;
+	border: 1px solid #999999 ;
+	border-radius: 10px;
+	position: absolute;
+	top: .13rem;
+	right: 45px;
+}
+.rule{
+	width: 100%;
+	height: .40rem;
+	line-height: .40rem;
+	padding-right: 10px;
+}
+.rule_t{
+	width:auto;
+	height: .40rem;
+	font-size: 12px;
+	color: #999999;
+	line-height: .40rem;
+	margin-left: 2.10rem;
+}
+.about{
+	width: 100%;
+	height: 2.93rem;
+	background: white;
+}
+.aboutArr{
+	position: absolute;
+	top: 15px;
+	right: 48px;
+}
+.m_carts_footer{
+	width: 100%;	
+	height: .45rem;
+	line-height: .45rem;
+	position: fixed;
+	bottom: 0;	
+	border-top: 1px solid #e0e0e0;
+	z-index: 5;
+	background: white;
+}
+.settlet{
+	display: inline-block;
+	width: 25%;
+	height: 100%;
+	line-height: inherit;	
+	position: absolute;
+	right: 0;
+	top:0;
+	border:1px solid #F56A00 ;
+	z-index: 100;	
+	}
+.total{
+	font-size: .15rem;
+    color: #999;
+    padding-right: 25%;
+    text-align: center;
+}

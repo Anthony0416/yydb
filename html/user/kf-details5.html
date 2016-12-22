@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../../dist/css/goods/search.css" />
+		<link rel="stylesheet" href="../../../dist/css/user/kf-details.css" />
+		<script type="text/javascript" src="../../js/quote/zepto.js" ></script>
+		<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>
+		<script type="text/javascript" src="../../js/quote/rem.js" ></script>
+	</head>
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href='javascript:history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>问答详情</span>
+			</div>
+			<div class="details-body">
+				<div class="box-question">
+					<div class="Q">Q</div>
+					<div class="question">
+						一元夺宝是公正的吗
+					</div>
+				</div>	
+				<div class="box-answer">
+					<div class="A">A</div>
+					<div class="answer">
+						<p>公平、公正是一元夺宝赖以生存的根本。夺宝的幸运号码由公式计算得出，公式中的两个数字都是不受人为干扰的。</p>
+						<p><span style="color: #FF0000;">幸运号码=10000001+变化值</span></p>
+						<p><span style="color: #FF0000;">变化值=（数值A+数值B）%数值C</span></p>
+						<p><strong>数值A：</strong>商品的最后一个号码分配完毕后，将该时间点前本站全部商品的最后50个参与时间的数值（每个时间按时、分、秒、毫秒的顺序组合，如20:15:25.362则为201525362）进行求和得出数值A；</p>
+						<p><strong>数值B：</strong>最近下一期中国福利彩票“老时时彩”的开奖号码（一个五位数值）</p>
+						<p><strong>数值C：</strong>该商品所需人次</p>
+						<p>在一元夺宝幸运号码的计算公式中，我们加入了“下一期老时时彩开奖结果”这个数字，因为这个开奖结果是没有人可以预知的，而另一组购买时间之和则在老时时彩揭晓前已经公示，因此没办法做到人为干扰最终的幸运号码，计算结果是公平可信的。任何一个号码，都有获得夺宝商品的机会；当期参与的人次越多，获得夺宝商品的机会也就越大。 公平公正和透明是一元夺宝的核心，所有的计算方法和号码分配信息都是公开的，一元夺宝非常欢迎您可以关注我们的每一期的夺宝活动号码分配和最终计算结果是否符合。相信越多用户来监督，就越能彰显一元夺宝的透明性和公平性，再次对您表示感谢，祝您夺宝愉快~！</p>
+					</div>
+				</div>
+				<div class="evaluated">
+					<p>本次解答是否对您有帮助</p>
+					<div class="choice">
+						<a class="positive ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_help.png"/>
+							有帮助
+						</a>
+						<a class="negative ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_unhelp.png" />
+							没帮助
+						</a>
+					</div>
+					<div class="j-rusult">感谢您的反馈，小宝会继续努力哒！</div>
+				</div>
+				<!--<div class="service">
+					<p>
+						需要更多帮助?
+						<a>
+							<img src="http://mimg.127.net/p/crm/20160811/img/contact.png" />
+						</a>
+					</p>
+					
+				</div>-->
+			</div>
+		</div>	
+	</body>
+	<script src="../../../dist/js/quote/all.js"></script>
+	<script type="text/javascript">
+		$('.positive').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+		$('.negative').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+	</script>
+</html>

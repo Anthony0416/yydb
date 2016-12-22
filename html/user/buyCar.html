@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>购物车</title>
+		
+		<link rel="stylesheet" type="text/css" href="../../css/base/all.css"/>
+		<link rel="stylesheet" href="../../css/user/buyCar.css" />
+		<link rel="stylesheet" href="../../css/component/numInput.css" />
+		<link rel="stylesheet" href="../../css/component/zepto.alert.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/backButton.js"></script>
+		<script src="../../js/user/browser.js"></script>
+	</head>
+	<body class="has-footer-bar">
+		
+			<!--<div id="title1">
+				<a id="back" href='#' onClick='javascript :history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>购物车</span>
+			</div>-->
+			<div id="goodsList" class="m_cart_list">				
+				<!--<div class="m_cart_items">	
+					<div class="m_cart_pic">
+						<img src="../../img/category/QQ图片20160903100812.png"/>
+					</div>
+					<div class="m_cart_text">
+						<p class="m_cart_title test-ellipsis">Samsung/三星 Galaxy Note7 </p>
+				        <p class="m_cart_explain">总需7088人次，剩余<span class="red">4426</span>人次</p>
+						<div class="w_num">
+							<span class="w_num_btn left">-</span>
+							<input  id="w_num_input" type="number" value="14"/>
+							<span class="w_num_btn right">+</span>
+						</div>						
+						<i class="iconfont red plus">&#xe602;</i>
+					</div>
+					<div class="mask">
+						<a>5</a><a>10</a><a>20</a><a>50</a><a>100</a><a>包尾</a>
+					</div>
+				</div>	-->
+			</div>
+			
+			
+	
+		
+		<!--删除与结算-->
+		<div class="m_carts_footer footer-top-bar">
+			<!--<div class="choose"><span class="point"></span><span class="quanc">全选</span></div>-->
+			<div class="total">
+				<!--<p>
+					共<span id="goodsNumber">0</span>件宝物，合计<span id="goodsPay" class="red">0元</span>
+				</p>
+				<p id="vip"></p>-->
+			</div>
+			<span class="settlet btn">夺宝</span>
+		</div>
+		
+		<!--购买后弹层-->
+		<div id="shareBg">
+			<!--微信分享指引-->
+			<div id="guide">
+				<img src="../../img/user/guide1.png">
+			</div>
+			<!--app分享弹层-->
+			<div id="sharePage">
+				<div id="shareItem">
+					<ul>
+						<li class="weChat">
+							<span>微信好友</span>
+						</li>
+						<li class="moment">
+							<span>微信朋友圈</span>
+						</li>
+					</ul>
+				</div>
+				<div id="cancel">取消</div>
+			</div>
+			<div class="shareInfo">
+				<img class="price" src="../../../dist/img/user/share.png"/>
+				<p>购买成功，坐等宝贝</p>
+				<p>分享与好友一起来获宝吧！</p>
+				
+				<div id="button">
+					<button class="button review">查看</button>
+					<button class="button share">分享</button>
+				</div>
+				
+			</div>
+			
+		</div>
+		
+		<!--include "../component/footer/index.html"-->	
+		<!--include "../component/numInput/index.html"-->
+		<script type="text/javascript" src="../../js/quote/zepto.alert.js" ></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+		<script src="../../js/user/buyCar.js"></script>
+		
+	</body>
+</html>

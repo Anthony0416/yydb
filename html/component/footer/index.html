@@ -1,0 +1,72 @@
+<div class="footer">
+	<ul>
+		<li>
+			<a href="../index.html?ih">
+				<div class="nav">
+					<div class="ih ispr"></div>
+					<p>商城</p>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="../goods/category.html">
+				<div class="nav">
+					<div class="ic ispr"></div>
+					<p>分类</p>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a href="../user/buyCar.html">
+				<div class="nav">
+					<div class="is ispr"></div>
+					<p>购物车</p>
+					<i class="gwc-tip"></i>
+				</div>
+			</a>
+		</li>
+		<li>
+			<a id="user" href="javascript:;" _dir="../user/"><!--href="../user/person.html"-->
+				<div class="nav">
+					<div class="if ispr"></div>
+					<p>我的</p>
+				</div>
+			</a>
+		</li>
+	</ul>
+</div>
+<script>
+(function(){
+	//导航地址处理
+	var list = $('.footer a');	
+	if(window.location.href.indexOf('index.html') > -1){
+		list.eq(0).attr('href','javascript:;').addClass('on');
+		list.eq(1).attr('href','goods/category.html');
+		list.eq(2).attr('href','user/buyCar.html');
+		list.eq(3).attr('_dir','user/');
+	}else if(window.location.href.indexOf('category.html') > -1){
+		list.eq(1).attr('href','javascript:;').addClass('on');
+	}else if(window.location.href.indexOf('buyCar.html') > -1){
+		list.eq(2).attr('href','javascript:;').addClass('on');
+	}else if(window.location.href.indexOf('person.html') > -1){
+		list.eq(3).attr('href','javascript:;').addClass('on');
+	}
+	
+	//购物车icon处理	
+	var data = app.gwc.getData();
+	var len = app.gwc.getDataLength(data);
+	len&&app.gwc.setNum(len);
+	
+	//个人中心 登录
+	$("#user").tap(function(){
+		var userInfo = app.user.getUserInfo();
+		console.log(userInfo);
+		if(userInfo){
+			app.action.href($(this).attr('_dir')+'person.html');
+		}else{
+			app.action.href($(this).attr('_dir')+'login.html');
+		}
+	})
+	
+})()
+</script>

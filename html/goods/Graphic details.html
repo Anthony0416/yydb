@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>图文详情</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<style>
+			#imgContent {
+				margin-top: 40px;
+			}
+			
+			img {
+				display: block;
+				width: 100%;
+				height: 100%;
+			}
+			
+			.license {
+				padding: 15px;
+				color: #666;
+			}
+		</style>
+		<script type="text/javascript" src="../../js/quote/all.js"></script>
+	</head>
+
+	<body>
+		<div id="body">
+			<!--include "../component/header/index.html"-->
+			<div id="imgContent">
+				<!--<img src="https://onegoods.nosdn.127.net/goods/2491/d0f896aac597931a5429d32d57267793.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/c3ed8d699c613b3bb92012d1ee4ca41a.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/3bdd2797e467dcf15a08aa2ace4017e6.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/16096b82cca92858cf962db3a4476603.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/950c0bd0d13e49cfea678fc6970c1656.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/101825dbe19526ad391e9f3e62955707.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/3625f75069cc51bdc168b4c463a5c8c2.jpg" />
+				<img src="https://onegoods.nosdn.127.net/goods/2491/71d69105d6d0e2c9e5d3cea1f9745d9a.jpg" />
+			</div>
+			<dl class="license">
+				<dt>重要说明：</dt>
+				<dd>
+					1、本商品由第三方提供；
+				</dd>
+				<dd>
+					2、以上详情页面展示信息仅供参考，商品以实物为准；
+				</dd>
+				<dd>
+					3、如快递无法配送至获得者提供的送货地址，将默认配送到距离最近的送货地，由获得者本人自提。
+				</dd>
+			</dl>-->
+			</div>
+		</div>
+		<script>
+			var img = gb.storage.get('img');
+			var i, l = img.length;
+			var str = '';
+			for(i = 0; i < l; i++) {
+				str += '<img src="' + img[i] + '" />'
+			}
+			$('#imgContent').html(str);
+		</script>
+	</body>
+
+</html>

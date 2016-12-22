@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>新增收货地址</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/add_address.css"/>
+		<link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css"/>
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/user/jsAddress.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body>
+		<!--include "../component/header/index.html"-->
+		<div class="m-user-addrAdd">
+			<div class="m-user-bar">
+				<div class="w-inputbar w-bar">
+					<div class="w-bar-label">收货人</div>
+					<div class="w-bar-control">
+						<input type="text" name="" id="userName" class="w-bar-input" placeholder="真实姓名"/>
+					</div>
+				</div>
+				<div class="w-inputbar w-bar">
+					<div class="w-bar-label">手机号码</div>
+					<div class="w-bar-control">
+						<input type="text" name="" id="mobile" class="w-bar-input" value maxlength="11" placeholder="手机号"/>
+					</div>
+				</div>
+				<div class="w-inputbar w-bar">
+					<div class="w-bar-label">邮政编码</div>
+					<div class="w-bar-control">
+						<input type="text" name="" id="zidcope" class="w-bar-input" value maxlength="6" placeholder="邮政编码"/>
+					</div>
+				</div>
+				<div class="w-selectbar w-bar">
+					<div class="w-bar-label">省份</div>
+					<div class="w-bar-control">
+						<select class="w-bar-input" name="provinceId" id="sel-provance">
+						</select>
+					</div>
+				</div>
+				<div class="w-selectbar w-bar">
+					<div class="w-bar-label">城市</div>
+					<div class="w-bar-control">
+						<select class="w-bar-input" id="sel-city" name="city" tabindex="4" required="required" onchange="selectcounty()">
+							<option value="北京市">请选择</option>
+                        </select>
+					</div>
+				</div>
+				<div class="w-selectbar w-bar">
+					<div class="w-bar-label">地区</div>
+					<div class="w-bar-control">
+						<select class="w-bar-input" id="sel-area" name="area" tabindex="5" required="required">
+							<option value="北京市">请选择</option>
+                        </select>
+					</div>
+				</div>
+				<div class="w-selectbar w-bar">
+					<div class="w-bar-label">详细地址</div>
+					<div class="w-bar-control">
+						<textarea class="w-bar-input" id="address" placeholder="详细地址" maxlength="26"></textarea>
+					</div>
+				</div>
+				<div class="w-checkBar w-bar">
+					<div class="w-bar-label">是否设为默认地址</div>
+					<div class="w-bar-ext">
+					    <span class="w-switcher"><i></i></span>
+					</div>
+				</div>
+				<div class="save-buttton">
+					<a class="btn add-btn"><span class="add-text">保存地址</span></a>
+				 </div>		
+			</div>
+		</div>
+		<script>
+			var type = decodeURI(gb.url.getParam('type'));
+			var obj = {};
+//			$('.w-switcher').on('tap',function(){
+//				$('.w-switcher i').toggleClass("i_move");
+//			})
+			$(".w-switcher i").css({left:0});//初始化小球位置
+			obj.is_default = 0 ;
+			$('.w-switcher').on('tap',function(){
+				
+				if(obj.is_default == 0){
+					$(".w-switcher").css("backgroundColor","#F56A00");
+					$(".w-switcher i").css({left:"0.26rem"});
+					obj.is_default = 1 ;
+				}else{
+					$(".w-switcher i").css({left:0});
+					$(".w-switcher").css("backgroundColor","#d9d9d9");
+					obj.is_default = 0 ;
+				}
+			})
+			$(".save-buttton").click(function(){
+					obj.name=$("#userName").val();
+					obj.phone=$("#mobile").val();
+					obj.code=$("#zidcope").val();
+					obj.province=$("#sel-provance").val();
+					obj.city=$("#sel-city").val();
+					obj.county=$("#sel-area").val();
+					obj.street=$("#address").val();
+//				console.log(obj);
+				if(!obj.name){
+					$.dialog({
+				        content : '请检查收货人姓名',
+				        title: "alert",
+				        time : 2000
+				    });
+				}else if(!(/^1[34578]\d{9}$/.test(obj.phone))){
+					$.dialog({
+				        content : '请填写正确的手机号',
+				        title: "alert",
+				        time : 2000
+				    });
+				}else if(obj.province=="请选择"||obj.city=="请选择"||obj.county=="请选择"||!obj.street){
+					$.dialog({
+				        content : '请检查收货地址',
+				        title: "alert",
+				        time : 2000
+				    });
+				}else{
+					var urlStr = "";
+					var objData = null;
+					if(type == 1){
+						urlStr = gb.ajaxUrl+"r=user/update-address";
+						obj.address_id = decodeURI(gb.url.getParam('address_id'));
+						objData = obj;
+					}else{
+						urlStr = gb.ajaxUrl+"r=user/address";
+						objData = obj;
+					}
+					$.ajax({
+						type:"get",
+						url:urlStr,
+						data:objData,
+						dataType:"jsonp",
+						success:function(mes){
+							console.log(mes)
+							if(mes.code == "0"){
+								$.dialog({
+							        content : mes.msg,
+							        title: "ok",
+							        ok:function(){
+										self.location=document.referrer;//返回上一页并且刷新
+							        }
+						   		});
+						   		
+							}else{
+								$.dialog({
+							        content : mes.msg,
+							        title: "alert",
+							        time : 2000
+						   		});
+							}
+						}
+					});
+				}
+				
+			})
+			upData();
+			//渲染修改数据
+			function upData(){
+				if(type == 1){
+					addressInit("sel-provance","sel-city","sel-area",decodeURI(gb.url.getParam('address_province')),decodeURI(gb.url.getParam('address_city')),decodeURI(gb.url.getParam('address_county')));
+					$("#userName").val(decodeURI(gb.url.getParam('address_name')));
+					$("#mobile").val(decodeURI(gb.url.getParam('address_phone')));
+					$("#address").val(decodeURI(gb.url.getParam('address_street')));
+					$("#zidcope").val(decodeURI(gb.url.getParam('address_code')));
+					if(decodeURI(gb.url.getParam('address_default')) == 1){
+						$(".w-switcher i").css({left:"0.26rem"});
+						$(".w-switcher").css("backgroundColor","#F56A00");
+						obj.is_default = 1 ;
+					}else{
+						$(".w-switcher i").css({left:0});
+						$(".w-switcher").css("backgroundColor","#d9d9d9");
+						obj.is_default = 0 ;
+					}
+				}else{
+					addressInit("sel-provance","sel-city","sel-area","请选择","请选择","请选择");
+				}
+			}
+			
+		</script>
+	</body>
+</html>

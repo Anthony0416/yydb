@@ -1,0 +1,175 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="telephone=no,email=no" name="format-detection" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, target-densitydpi=medium-dpi" />
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta name="format-detection" content="telephone=no" />
+    <title>专题活动 - 获宝网</title>
+    <link rel="stylesheet" href="../../css/user/hm.css"/>
+    <link rel="stylesheet" href="../../css/component/zepto.alert.css">
+    <script type="text/javascript" src="../../js/user/hm.js"></script>
+    <!--<script type="text/javascript" src="../../js/quote/zepto.js"></script>-->
+    <script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/quote/zepto.alert.js"></script>
+    <style type="text/css">
+        body{
+            background: url("../../img/huodong/bg-redbags.jpg") no-repeat;
+            background-size: cover;
+        }
+        .pop_con
+        {
+            margin-top: 0;
+        }
+        .hongbao_con > div
+        {
+            font: .20rem/.48rem "微软雅黑";
+        }
+        .head-back{
+            height: 0.70625rem;
+            position: absolute;
+            top: 0;
+            z-index: 111;
+        }
+        .head-back-btn{
+            display:inline-block;
+            background-image: url(../../img/huodong/bg-back.png);
+            background-size: contain;
+            z-index: 2;
+            position: absolute;
+            top: 0.26rem;
+            bottom: 0;
+            left: .3125rem;
+            margin: auto 0;
+            height: .6275rem;
+            line-height: .6275rem;
+            width: .6275rem;
+        }
+        .head-back-btn:after{
+            background-image:url(../../img/huodong/back-button-white.png);
+            content: '';
+            display: block;
+            width: .6275rem;
+            height: .6275rem;
+            background-size: contain;
+            background-repeat: no-repeat;
+        }
+        .rDialog-wrap{
+            padding:0.5em 0.5rem;
+        }
+        .rDialog-content,.rDialog-ok{
+            font-size:14px !important;
+        }
+        .register_hb {
+            min-height: 7.2rem;
+        }
+        .hongbao{
+            padding:1.8rem 0.8rem .1rem;
+        }
+        .first_bg, .second_bg{
+            height:3.4rem;
+        }
+    </style>
+    <script type="text/javascript">
+        $(".head-back").on('click',".btn-back",function(){
+            alert(1)
+        })
+        //初始化REM
+        var setFontSize = function () {
+            var width = document.documentElement.clientWidth;
+            width = width > 640 ? 640 : width;
+            var fontSize = width / 640 * 100;
+            document.getElementsByTagName("html")[0].style.fontSize = fontSize + "px";
+        }
+        setFontSize();
+        window.onresize = setFontSize;
+        $(document).ready(function () {
+            $("#btn_open").click(function () {
+                $.ajax({
+                    type:'get',
+                    url:gb.ajaxUrl+"r=user/send&mark=1",
+                    dataType:'jsonp',
+                    success:function(mes){
+                        console.log(mes)
+                        if(mes.code==0){
+                            $.dialog({
+                                content:"恭喜您领取成功",
+                                title:"ok",
+                                ok:function(){
+                                    window.location.href="../index.html"
+                                }
+                            })
+                        }else if(mes.msg=="你已经不是新用户"){
+                            $.dialog({
+                                content:"您已经不是新用户",
+                                title:"alert",
+                                ok:function(){
+                                    window.location.href="../index.html"
+                                }
+                            })
+                        }else{
+                            window.location.href="../user/login.html?redirectUrl=../../html/huodong/red-bags.html"
+                        }
+                    }
+                })
+            })
+        })
+
+    </script>
+</head>
+<body class="fourMainBg">
+<div class="head-back">
+    <a  class="head-back-btn" href="javascript:history.go(-1);"></a>
+</div>
+<!--<div class="header" id="header">
+    <a href="javascript:history.go(-1);">返回上一层</a>
+    <div class="title">
+        新用户可领18夺宝币</div>
+    &lt;!&ndash;<a class="home" href="/">返回首页</a>&ndash;&gt;
+</div>-->
+<div class="hongbao">
+    <div class="hongbao_box">
+        <div class="first_bg">
+        </div>
+        <div class="second_bg">
+        </div>
+        <div class="hongbao_con register_hb">
+            <p>
+
+            </p>
+            <p>
+                <strong>获宝网</strong></p>
+            <p>
+                <i>发了一个红包</i></p>
+            <p>
+                <span>新用户可领取18夺宝币</span></p>
+            <p>
+                <a id="btn_open" href="javascript:void(0)">拆红包</a></p>
+            <div class="shuoming">
+                <strong>新用户送好礼*18元夺宝币</strong><br />
+                新用户注册身份信息后，凡是未充值过的用户,系统即自动赠送18夺宝币红包。红包有限，赠完即止；红包详情：
+                <br />
+                18夺宝币<br />
+                <!--b.赠送的红包需在此页面领取才会有效；<br />
+                c.每个真实用户（核对真实姓名，身份证和手机等）只限一次；<br />
+                d.对于互刷套现及恶意，重复注册的用户将冻结其账户；对已赠送的，有权要求用户返还;<br />
+                e.本活动最终解释权归本公司所有。-->
+            </div>
+        </div>
+    </div>
+</div>
+<!--<div class="popup_bg" style="display: none">
+</div>
+<div class="result_layer error bind" style="display: none">
+    <div>
+        <p>
+            恭喜您领取成功</p>
+    </div>
+    <a onclick="javascript:(function(){$('.result_layer.error .confirm').closest('.error').hide().siblings('.popup_bg').hide();history.go(-1);}())"
+       class="confirm">确认</a>
+</div>-->
+</body>
+</html>

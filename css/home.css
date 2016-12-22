@@ -1,0 +1,274 @@
+b {
+	color: #0079FE;
+}
+
+/*滚动条消失*/
+::-webkit-scrollbar {
+
+	width: 0px;
+
+}
+
+HTML {
+
+	scrollbar-base-color: #fff;
+	scrollbar-base-color: #fff;
+	scrollbar-3dlight-color: #fff;
+	scrollbar-highlight-color: #fff;
+	scrollbar-track-color: #fff;
+	scrollbar-arrow-color: #fff;
+	scrollbar-shadow-color: #fff;
+	scrollbar-dark-shadow-color: #fff;
+
+}
+/*我添加的公用样式*/
+.partTitle {
+	height: .50rem;
+	line-height: .50rem;
+	position: relative;
+	text-align: center;
+	margin: 0 .15rem;
+}
+.partTitle::before,.partTitle::after{
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0.25rem;
+	
+	border-top:1px solid #c5c5c5;
+	width: 36%;	
+}
+.partTitle::before{
+	left: 0;
+}
+.partTitle::after{
+	right: 0;
+}
+.partTitleL {
+	font-size: 16px;	
+	color: gray;
+}
+.partTitleR {
+	font-size: 14px;
+	color: gray;
+	position: absolute;
+	right: 5px;
+	top: 5px;
+}
+/*结构*/
+#banner {
+	height: 1.4rem;
+}
+
+#content {
+	padding-top: 0.1rem;
+}
+
+/*new*/
+#new {
+	height: 0.95rem;
+	position: relative;
+}
+#newContent {
+	
+}
+.box-flex-item {
+	width: 33%;	
+	height: 1rem;
+}
+/*热门商品*/
+#hot{
+	padding: 0 .15rem;
+}
+#hot>div {	
+	width: 50%;
+	display: inline-block;
+	margin-bottom: .05rem;
+	box-sizing: border-box;	
+}
+#hot>div:nth-child(odd) {	
+	padding-right: 0.035rem;
+}
+#hot>div:nth-child(even) {	
+	padding-left: 0.035rem;
+}
+
+.frame{
+	width: 100%;
+	height: 2rem;
+	border: 1px solid #ececec;
+	display: inline-block;
+	position: relative;
+	background: #fff;
+}
+
+.hot-img{
+	width: 1.23rem;
+	height: 1.23rem;
+	margin:0 auto;
+	margin-bottom: .08rem;
+}
+.hot-img img {
+	width: 100%;
+	height: 100%;
+}
+.hot-img-info{	
+	height: .50rem;
+	margin:0 auto;
+	padding-left: .10rem;
+	padding-top: .03rem;
+	transition: all .4s;
+}
+/*.frame.on .hot-img-info{
+	background: #ececec;
+}
+.frame.on .jindutiao{
+	background: #fff;
+}*/
+.hot-img-text{
+	font-size: 0.12rem;
+	color: #666;
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	word-break:keep-all;
+	margin-bottom: .05rem;
+}
+.progressBar{
+	width: 1.15rem;
+	height: .11rem;	
+	position: relative;
+}
+.progressBar-text{
+	margin-bottom: .03rem;
+    font-size: 0.12rem;
+    color: #999999;
+}
+.progressBar-text strong{
+	margin-left: .05rem;
+	font-weight: normal;
+}
+.jindutiao{
+	display: inline-block;
+	width: 1.24rem;
+	height: .05rem;
+	position: absolute;
+	bottom: .05rem;
+	border-radius: 5px;
+	background-color: #efeeee;
+	transition: all .4s;
+}
+.goods-info {
+	font-size: 0.12rem;
+	line-height: .153rem;
+	color: #b0b0b0;
+	margin-top: -.04rem;
+}
+.total,.remain {
+	position: absolute;
+}
+.total {
+	/*left: .15rem;*/
+}
+.remain {
+	right: .4rem;
+}
+.remain b {
+	color: #6fb0f9;
+}
+.color{
+	display: block;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg,#FFCB3D,#FF8533);
+}
+
+#plus-text{
+	display: block;
+	width: 120px;
+	height: 20px;
+	line-height: 20px;
+	font-size: 12px;
+	margin-bottom: .1rem;
+	text-align: center;
+	bottom: 80px;
+	position: fixed;
+	left: 50%;
+	margin-left: -60px;
+	background: #959695;
+	color: #FFFFFF;
+	border-radius: 2px;
+	opacity: 0;
+}
+
+/*最新揭晓图片样式*/
+.newFirst-pic{
+	width: 0.7rem;
+	height: 0.7rem;
+	margin: 0 auto;
+}
+
+.newFirst-pic img{
+	width: 100%;
+	height: 0.7rem;
+}
+/*时间*/
+.newFirst-lotterytime{
+	width: 95%;
+	height: 0.2rem;
+	text-align: center;
+	padding-top: 0.05rem;
+	margin: 0 auto;
+	overflow: hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	word-break:keep-all;
+}
+.newFirst-text,#new-time{
+	display: inline-block;
+	color: #999;
+	
+}
+.newFirst-text,.new-time{
+	 font-size: 12px;
+}
+.bg{
+	position: absolute;
+	height:100%;
+	width: 100%;
+	z-index: 100;
+	background: #000;
+	opacity: 0.5;
+	left: 0;
+	top: 0;
+	overflow: scroll;
+}
+.bg18{
+	width: 100%;
+}
+.closebags{
+	width: .35rem;
+	height: .35rem;
+	position: absolute;
+	background: url("../img/huodong/redbagsx.png") no-repeat;
+	background-size: cover;
+	top: 50%;
+	right: 0;
+	margin-right: .52rem;
+	margin-top:-1.44rem;
+	z-index: 111;
+}
+.noslide{
+	height: 100%;
+	padding-bottom: 0;
+}
+.img18{
+	height: 3.00rem;
+	width: 3.25rem;
+	z-index: 101;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	margin-left: -1.625rem;
+	margin-top: -1.50rem;
+}

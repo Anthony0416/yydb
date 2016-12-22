@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>用户登录</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/base/form.css" />
+		<link rel="stylesheet" href="../../css/component/zepto.alert.css" />
+		<link rel="stylesheet" href="../../css/component/verificationCode.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/backButton.js"></script>
+		<script src="../../js/user/browser.js"></script>
+		<style>
+			#register,
+			#forget {
+				float: left;
+				margin-top: .25rem;
+				color: #0079fe;
+			}
+			
+			#register {
+				float: right;
+			}
+			/*快速登录样式*/
+			
+			.quick_login {
+				margin-top: .8rem;
+				border-top: 1px solid #d7d7d7;
+				position: relative;
+				padding-top: .21rem;
+				text-align: center;
+				margin-left: 0.2rem;
+				margin-right: 0.2rem;
+			}
+			
+			.quick_login h4 {
+				position: absolute;
+				top: -.17rem;
+				left: 50%;
+				background-color: #f3f5f7;
+				padding: .05rem .15rem;
+				color: #616161;
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+				font-size: 14.5px;
+			}
+			
+			.quick_login a {
+				position: relative;
+				width: .82rem;
+				color: #616161;
+				display: inline-block;
+				margin: .1rem;
+				text-align: center;
+				line-height: 0.25rem;
+				height: 0.8rem;
+				display: none;
+			}
+			
+			.quick_login a.quick_wx {
+				display: none;
+			}
+			
+			.icon {
+				width: .43rem;
+				height: .43rem;
+				overflow: hidden;
+				position: absolute;
+				left: 50%;
+				transform: translateX(-50%);
+				background-image: url(../../img/user/quick_login.png);
+				background-repeat: no-repeat;
+				background-size: 1.95rem;
+			}
+			
+			.icon_qq {
+				background-position: 0 -0.04rem;
+			}
+			
+			.icon_wx {
+				background-position: -0.06rem -0.046rem;
+			}
+		</style>
+	</head>
+
+	<body class="has-header">
+		<!--include "../component/header/index.html"-->
+
+		<div class="form-wrap">
+			<ul class="form-ul">
+				<li>
+					<input id="phoneNum" type="tel" maxlength="11" placeholder="请输入手机号码" />
+				</li>
+				<li>
+					<input id="password" type="password" placeholder="请输入密码" />
+				</li>
+			</ul>
+			<!--include "../component/verificationCode/index.html"-->
+			<div id="login-button" class="form-btn-wrap">
+				<a id="login" class="btn">登&nbsp;录</a>
+				<a id="register" href="register.html">快速注册账号</a>
+				<a id="forget" href="getPwd.html">忘记密码？</a>
+			</div>
+		</div>
+		<div class="quick_login">
+			<h4>其他登录方式</h4>
+			<a href="javascript:;" class="quick quick_qq"><i class="icon icon_qq"></i><br>QQ</a>
+			<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb6a080e93974bc1d&redirect_uri=http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/html/user/login.html&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect" class="quick quick_wx wechat_public"><i class="icon icon_wx"></i><br><br><p>微信</p></a>
+			<a href="javascript:;" class="quick quick_wx wechat_app"><i class="icon icon_wx"></i><br><br><p>微信</p></a>
+		</div>
+		<script src="../../js/quote/md5.js"></script>
+		<script type="text/javascript" src="../../js/user/login.js"></script>
+		<script type="text/javascript" src="../../js/quote/zepto.alert.js"></script>
+		<script src="../../../dist/js/quote/VConsole.js"></script>
+		
+		
+
+	</body>
+
+</html>

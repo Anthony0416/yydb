@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>大转盘</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="../../css/user/kinerLottery.css">
+    <link rel="stylesheet" href="../../css/base/all.css">
+    <link rel="stylesheet" href="../../css/component/zepto.alert.css">
+    	<style>
+    	.rDialog-wrap{
+    		padding: 1em 2em;
+    	}
+    	</style>
+</head>
+
+<body>
+<div class="head-back">
+    <a  class="btn-back-btn" href="javascript:history.go(-1);"></a>
+</div>
+<div id="content">
+    <img class="bg" src="../../img/huodong/lotteryBg.jpg">
+    <div id="box" class="box">
+        <div class="outer KinerLottery KinerLotteryContent"><img src="../../img/huodong/lotteryContent.png"></div>
+        <!-- 大专盘分为三种状态：活动未开始（no-start）、活动进行中(start)、活动结束(completed),可通过切换class进行切换状态，js会根据这3个class进行匹配状态 -->
+        <div  id="but-" class="inner KinerLotteryBtn start"></div>
+        <p class="times">剩余抽奖次数:<span class="white">1</span>次</p>
+        <div class="btn-record">我的中奖纪录</div>
+        <a class="btn-back" href="../index.html">&nbsp;&nbsp;&nbsp;返回主页&nbsp;&nbsp;&nbsp;</a>
+    </div>
+        <p class="rule">活动规则:&nbsp;活动期间,每个注册用户每天只可以抽奖一次.次数不积累,最终解释权归本公司所有!</p>
+    
+    
+</div>
+    <script src="../../js/quote/all.js"></script>
+    <script src="../../js/user/kinerLottery.js"></script>
+    <script src="../../js/quote/zepto.alert.js"></script>
+    <!--<script src="../../js/quote/VConsole.js"></script>-->
+    <script>
+        init()
+        var prize;//奖品
+        function init(){
+            $.ajax({
+                type:"get",
+                url:gb.ajaxUrl+"r=shop/lottery&mark=0",
+                dataType:'jsonp',
+                success:function(mes){
+//                    mes = JSON.parse(mes);
+                    if(mes.code ==0){
+                        var times = mes.data.time;
+                        $(".white").text(times);
+                        if(times==0){
+                            $("#but-").removeClass('start');
+                            $("#but-").addClass('no-start');
+                        }
+                    }else{
+                        $.dialog({
+                            content:"请登录",
+                            title:"ok",
+                            ok:function(){
+                            	window.location.href="../user/login.html?redirectUrl=../../html/huodong/lottery.html"
+                            }
+                        })
+                    }
+                },error:function(e){
+                    console.log(e);
+                }
+            })
+            //我的中奖纪录
+            $(".btn-record").tap(function () {
+                window.location.href="prize-record.html"
+//                $.ajax({
+//                    type:'get',
+//                    url:gb.ajaxUrl+"r=shop/prize",
+//                    dataType:'jsonp',
+//                    success:function(mes){
+//                        mes=mes.data.list
+//                        console.log(mes)
+//                        $.dialog({
+//                            content:mes[0].prize+"&nbsp;"+mes[0].create_on,
+//                            title:"ok",
+//                            ok:function(){
+//                                location.reload(true)
+//                            }
+//                        })
+//                    }
+//                })
+            })
+        }
+    /**
+     * 根据转盘旋转角度判断获得什么奖品
+     * @param deg
+     * @returns {*}
+     */
+    var whichAward = function(deg) {
+
+        if ((deg > 330 && deg <= 360) || (deg > 0 && deg <= 30)) { //10M流量
+            return "6 夺宝币";
+        } else if ((deg > 30 && deg <= 90)) { //IPhone 7
+            return "9 夺宝币";
+        } else if (deg > 90 && deg <= 150) { //30M流量
+            return "12 夺宝币";
+        } else if (deg > 150 && deg <= 210) { //5元话费
+            return "谢谢您的参与";
+        } else if (deg > 210 && deg <= 270) { //IPad mini 4
+            return "1 夺宝币";
+        } else if (deg > 270 && deg <= 330) { //20元话费
+            return "3 夺宝币";
+        }
+
+    }
+
+
+    var KinerLottery = new KinerLottery({
+        rotateNum: 8, //转盘转动圈数
+        body: "#box", //大转盘整体的选择符或zepto对象
+        direction: 0, //0为顺时针转动,1为逆时针转动
+
+        disabledHandler: function(key) {
+
+            switch (key) {
+                case "noStart":
+                    $.dialog({
+                        content:"没有次数了哦!",
+                        title:"alert",
+                        ok:function(){
+                        	return
+                        }
+                    })
+                    break;
+                case "completed":
+                    alert("活动已结束");
+                    break;
+            }
+
+        }, //禁止抽奖时回调
+
+        clickCallback: function() {
+            var _this=this;
+            $.ajax({
+                type:"get",
+                url:gb.ajaxUrl+"r=shop/lottery&mark=1",
+                dataType:'jsonp',
+                async:false,
+                success:function(mes){
+                    console.log(mes)
+//                    mes = JSON.parse(mes);
+                    if(mes.code==0){
+                        prize = mes.data.id;
+                        console.log(prize)
+                        _this.goKinerLottery(random(prize));
+                    }else(
+                        $.dialog({
+                            content:"请登录!",
+                            title:"ok",
+                            ok:function(){
+                            	window.location.href="../user/login.html?redirectUrl=../../html/huodong/lottery.html"
+
+                            }
+                        })
+                    )
+                }
+            })
+            //此处访问接口获取奖品
+            function random(prize) {
+                return Math.floor(Math.random() * 30 + (60 * prize));//n为后台获取，顺时针方向为0,1,2,3,4,5代表6个商品
+            }
+
+
+
+//            this.goKinerLottery(random(prize));
+
+        }, //点击抽奖按钮,再次回调中实现访问后台获取抽奖结果,拿到抽奖结果后显示抽奖画面
+
+        KinerLotteryHandler: function(deg) {
+
+            if(deg > 150 && deg <= 210){
+                $.dialog({
+                    content:whichAward(deg),
+                    title:"ok",
+                    ok:function(){
+                        init();
+                    }
+                })
+            }else {
+                $.dialog({
+                    content:"恭喜您获得:" + whichAward(deg),
+                    title:"ok",
+                    ok:function(){
+                        init();
+                    }
+                })
+            }
+
+
+            } //抽奖结束回调
+    });
+    </script>
+</body>
+
+</html>

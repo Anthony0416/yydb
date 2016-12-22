@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../../dist/css/goods/search.css" />
+		<link rel="stylesheet" href="../../../dist/css/user/kf-details.css" />
+		<script type="text/javascript" src="../../js/quote/zepto.js" ></script>
+		<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>
+		<script type="text/javascript" src="../../js/quote/rem.js" ></script>
+	</head>
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href='javascript:history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>问答详情</span>
+			</div>
+			<div class="details-body">
+				<div class="box-question">
+					<div class="Q">Q</div>
+					<div class="question">
+						夺宝获得的商品如何保修
+					</div>
+				</div>	
+				<div class="box-answer">
+					<div class="A">A</div>
+					<div class="answer">
+						一元夺宝所有商品均从正规渠道采购，100%正品，可享受厂家所提供的全国联保服务。售后标准均依照该产品的售后标准进行。【<strong>如产品遇到质量问题，建议第一时间联系该产品的官方指定售后维修点；若您遇到无法自行联系处理的，可联系客服小宝协助处理。</strong>】举例说明：苹果手机，可凭借序列号在您当地的苹果售后直接进行售后处理，如您在售后过程中有任何疑问或无法自行处理，可联系客服小宝，协助处理。考拉海购商品，可联系客服小宝，索要考拉订单号后，直接联系考拉客服处理即可。
+					</div>
+				</div>
+				<div class="evaluated">
+					<p>本次解答是否对您有帮助</p>
+					<div class="choice">
+						<a class="positive ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_help.png"/>
+							有帮助
+						</a>
+						<a class="negative ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_unhelp.png" />
+							没帮助
+						</a>
+					</div>
+					<div class="j-rusult">感谢您的反馈，小宝会继续努力哒！</div>
+				</div>
+				<!--<div class="service">
+					<p>
+						需要更多帮助?
+						<a>
+							<img src="http://mimg.127.net/p/crm/20160811/img/contact.png" />
+						</a>
+					</p>
+					
+				</div>-->
+			</div>
+		</div>	
+	</body>
+	<script src="../../../dist/js/quote/all.js"></script>
+	<script type="text/javascript">
+		$('.positive').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+		$('.negative').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+	</script>
+</html>

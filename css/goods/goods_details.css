@@ -1,0 +1,250 @@
+/*banner*/
+#banner {
+	margin-top: 40px;
+	height: 2.5rem;
+	background-color: gainsboro;
+	background-color: white;
+	height: 2.55rem;
+}
+.swipe {
+	overflow: hidden;
+	visibility: hidden;
+	position: relative;
+}
+#swipe-wrap {
+	overflow: hidden;
+	position: relative;
+}
+#swipe-wrap > figure {
+	float: left;
+	width: 100%;
+	position: relative;
+  margin-top: 0.1rem;
+}
+#slider {  
+	width: 2.5rem;/* 设置最大的宽度 */  
+	height: 2.5rem;
+	margin: 0px auto; /* 居中对齐 */
+	position: relative;  
+}  
+figure {  
+    margin: 0;/* 对齐，四周宽度都为0，在轮播的时候，以整张图片进行移动 */  
+} 
+/*底边小点的设置*/
+.point{
+	width: 2rem;
+	position: absolute;
+	top: 2.37rem;
+	left: 50%;
+	margin-left: -1rem;
+}
+#position {
+	height: 10px;
+	text-align: center;
+	list-style: none;
+	display: table;
+	margin: 0 auto;
+}
+
+#position li {
+	width: 7px;
+	height: 7px;
+	border-radius: 50%;
+	background: rgba(0,0,0,0.3);
+	margin: 0 3px;
+	cursor: pointer;
+	float: left;
+}
+.on {
+    background-color: #F4681E !important;
+} 
+.piuture img{
+	width: 2.5rem;
+	height: 2.4rem;
+}
+/*商品信息*/
+.all-goods-info{
+	width: 95%;
+	display: inline-block;
+	margin: 10px;
+	vertical-align: top;
+}
+.all-goods-info-text-1{
+	font-size: 13px;
+	display: inline-block;
+	
+}
+.all-goods-info-progressBar{
+	width: 100%;
+	/*height: 33px;*/
+	margin: 10px 0 0;
+	display: inline-block;
+	font-size: 12px;
+	
+}
+#info {
+	color: gray;
+}
+#data {
+	margin-top: 5px;
+}
+#data>div {
+	padding: 10px;
+	border: 1px solid gainsboro;
+	border-bottom: none;
+	position: relative;
+}
+/*进度条*/
+#data .jindutiao{
+	display: inline-block;
+	width: 100%;
+	height: 5px;
+	bottom: 1px;
+	border-radius: 5px;
+	background-color: #efeeee;
+	position: relative;
+}
+/*揭晓倒计时*/	
+.jiexiao {
+	padding: 0.05rem 0.15rem;
+	text-align: left;
+}
+#daojishi {
+	font-size: 0.2rem;
+	margin-left: 10px;
+}
+/*揭晓结果*/
+#data>div>img {
+	position: absolute;
+	right: -4px;
+	top: -4px;
+	height: 0.5rem;
+	width: 0.5rem;
+}
+.win_img,.win_ifo {
+	display: inline-block;
+}
+.win_img {
+	padding-right: 0.1rem;
+}
+.win_img img {
+	width: .5rem;
+	height: .5rem;
+}
+.win_ifo {
+	vertical-align: top;
+}
+.color{
+	display: block;
+    height: 100%;
+    border-radius: 4px;
+    background: linear-gradient(90deg,#FFCB3D,#FF8533);
+}
+.all-goods-info-text-2{
+	display: block;
+	height: 18px;
+	width: 100%;
+}
+.text-renshu,.text-number{
+	display: inline-block;
+}
+.text-number{
+	float: right;
+}
+b{
+	color: #0079fe;
+}
+/*夺宝号码*/
+#buyNum {
+	margin-top: 10px;
+	text-align: center;
+	background-color: white;
+	font-size: 12px;
+	color: gray;
+	padding: 5px 0;
+}
+#buyNum a {
+	color: red;
+}
+/*商品详情下方选项*/
+#zilei,#jilu {
+	padding: 0 10px;
+	margin: 10px 0;
+	/*border-top: 1px solid gainsboro;*/
+	background-color: white;
+}
+#zilei p {
+	height: 40px;
+	border-bottom: 1px solid gainsboro;
+	color: gray;
+}
+#zilei span {
+	display: inline-block;
+	margin: 10px 5px;
+}
+/*下方箭头*/
+.userArr {
+	float: right;
+	width: 10px;
+	height: 10px;
+	margin: 14px 5px !important;
+}
+/*夺宝记录*/
+#jilu p{
+	padding: 10px;
+}
+#jilu div {
+	position: relative;
+	height: 50px;
+}
+#jilu img {
+	position: absolute;
+	border-radius: 50%;
+	width: 40px;
+	height: 40px;
+	
+}
+#jilu a,#jilu span {
+	position: absolute;
+	left: 50px;
+	top: 3px;
+}
+#jilu span {
+	position: absolute;
+	top: 23px;
+}
+/*底部按钮*/
+#goodsBtn {
+	width: 100%;
+	background-color: gainsboro;
+	height: 50px;
+	margin: 0 auto;
+	position: fixed;
+	bottom: 0;
+}
+#goodsBtn div {
+	width: 90%;
+	margin: 0 auto;
+}
+#goodsBtn p {
+	display: inline-block;
+	line-height: 50px;
+}
+#goodsBtn span {
+	display: inline-block;
+	text-align: center;
+	width: 45%;
+	height: 40px;
+	/*margin: 5px;*/
+	margin: 5px 0;
+	border-radius: 3px;
+	color: white;
+	font-size: 16px;
+	line-height: 40px;
+}
+#add {
+	width: 100% !important;
+}
+#goodsBtn span:last-child {
+	float: right;
+}

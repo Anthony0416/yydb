@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>个人资料修改</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<script type="text/javascript" src="../../js/quote/all.js"></script>
+		<script type="text/javascript" src="../../js/quote/upload.js"></script>
+		<style type="text/css">
+			.portrait {
+				width: 100%;
+				height: 2.95rem;
+				margin-top: .4rem;
+				/*background: white;*/
+				position: relative;
+			}
+			
+			#pic {
+				width: 1.6rem;
+				height: 1.6rem;
+				/* border: 2px solid white;*/
+				border-radius: 50%;
+				position: absolute;
+				top: .6rem;
+				left: 50%;
+				margin-left: -0.8rem;
+				overflow: hidden;
+				box-shadow: 0 0 10px #0CC;
+				-webkit-box-shadow: 0 0 10px #666;
+			}
+			
+			.thumb>img {
+				width: 1.6rem;
+				height: 1.6rem;
+			}
+			.form {
+				width: 1.6rem;
+				height: 1.6rem;
+				position: absolute;
+				top: 0;
+				opacity: 0;
+			}
+			.form>input {
+				width: 1.6rem;
+				height: 1.6rem;
+			}
+			.pic {
+				background: ghostwhite;
+			}
+			
+			.p-text {
+				height: .3rem;
+				/*text-align: center;*/
+				line-height: .3rem;
+				padding-left: .1rem;
+				font-size: .17rem;
+				/*background: #ff6b00;*/
+				color: grey;
+			}
+			
+			#package {
+				background: white;
+				font-size: 0;
+			}
+			
+			#package div {
+				width: 0.9rem;
+				height: 0.9rem;
+				display: inline-block;
+			}
+			
+			#package img {
+				width: 100%;
+				height: 100%;
+			}
+			
+			.conserve {
+				width: 100%;
+				height: .45rem;
+				text-align: center;
+				line-height: .45rem;
+				font-size: .17rem;
+				position: fixed;
+				bottom: 0;
+			}
+			
+			.name-t {
+				width: 1.8rem;
+				height: .3rem;
+				background: #E9E9E9;
+				position: absolute;
+				top: 2.7rem;
+				left: 50%;
+				margin-left: -.9rem;
+			}
+			
+			.revise {
+				width: 1.8rem;
+				height: .3rem;
+				outline: none;
+				border: none;
+				padding: 0;
+				margin: 0;
+				background: none;
+				text-align: center;
+				font-size: .17rem;
+			}
+			
+			.shangchu {
+				display: inline-block;
+				width: 25%;
+				height: .9rem;
+				position: relative;
+				border: 1px solid #E9E9E9;
+			}
+			
+			/*.thumb {
+				width: .38rem;
+				height: .36rem;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-left: -.19rem;
+				margin-top: -.18rem;
+			}
+			*/
+			.on {
+				border: 1px solid red;
+			}
+		</style>
+	</head>
+
+	<body>
+		<!--include "../component/header/index.html"-->
+		<div class="portrait">
+			<div id="pic">
+				<div class="thumb">
+					<img src="../../img/touxiang/duobao9.jpg" />
+				</div>
+				<form enctype="multipart/form-data" method="post" class="form">
+					<input type="file" name="fileToUpload" class="fileToUpload" accept="image/*" />
+					<div class="upload-progress"><span></span></div>
+				</form>
+			</div>
+
+			<div class="name-t">
+				<input type="text" class="revise" placeholder="请输入昵称" />
+			</div>
+		</div>
+		<!--<div class="pic">-->
+		<!--<p class="p-text">系统头像</p>
+			<div id="package">
+				<div><img src="../../img/touxiang/duobao9.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao8.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao7.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao6.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao5.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao4.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao3.jpg" /></div>
+				<div><img src="../../img/touxiang/duobao2.jpg" /></div>
+			</div>-->
+		<!--<p class="p-text">上传头像</p>
+			<span class="shangchu">
+				<img class="thumb" src="../../img/touxiang/x.png" />
+				
+			</span>-->
+		<!--</div>-->
+		<div class="conserve btn">保存</div>
+	</body>
+	
+	<script>
+		$.ajax({
+				url: gb.ajaxUrl + "r=user/index",
+				dataType: 'jsonp',
+				success: function(data) {
+					if(data&&data.code == '0'){
+						data = data.data[0];	
+						$(".thumb>img").attr('src',data.img);
+					}
+				}
+			})
+		$("#pic").fileUpload({   
+		        "url": gb.ajaxUrl + 'r=user/upload',   
+		        "files": "myFile"  
+		      });
+	</script>
+
+</html>

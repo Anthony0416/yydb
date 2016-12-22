@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>重置密码</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/base/form.css" />
+		<!--<link rel="stylesheet" href="../../css/user/register.css" />-->
+		<link rel="stylesheet" href="../../css/component/zepto.alert.css" />
+		<link rel="stylesheet" href="../../css/component/verificationCode.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+
+		<style>
+			#footer {
+				text-align: center;
+			}
+			
+			#hint {
+				color: #655C5C;
+				margin-top: .07rem;
+				text-align: right;
+			}
+		</style>
+	</head>
+
+	<body class="has-header">
+		<!--include "../component/header/index.html"-->
+		<div class="form-wrap">
+			<ul class="form-ul">
+				<!--<li>
+					<input id="userName" maxlength="10" placeholder="请输入用户名"/>		
+				</li>-->
+				<li>
+					<input id="phoneNum" type="tel" maxlength="11" placeholder="请输入手机号" />
+				</li>
+				<li>
+					<input id="password" type="password" placeholder="请重新设置密码" />
+				</li>
+				<li>
+					<input id="passwordChk" type="password" placeholder="请再次输入新密码" />
+				</li>
+			</ul>
+			<p id="hint">密码至少 6 位数字或字母</p>
+			<!--include "../component/verificationCode/SMSCode.html"-->
+			<div id="register-button" class="form-btn-wrap">
+				<a class="btn">重置密码</a>
+			</div>
+		</div>
+
+		<script src="../../js/quote/md5.js"></script>
+		<script type="text/javascript" src="../../js/quote/zepto.alert.js"></script>
+		<script type="text/javascript">
+			$('#register-button').on('tap', function() {
+				if(0 && !$('#userName').val()) {
+					$.dialog({
+						content: '请检查用户名',
+						title: "alert",
+						time: 2000
+					});
+					return;
+				} else {
+					var name = $('#userName').val();
+					if(!(/^1[34578]\d{9}$/.test($('#phoneNum').val()))) {
+						$.dialog({
+							content: '请填写正确的手机号',
+							title: "alert",
+							time: 2000
+						});
+						return;
+					} else {
+						var phone = $('#phoneNum').val();
+						var verification = $('.iden_code').val();
+						var next;
+						//验证码判断
+						if(!verification) {
+							$.dialog({
+								content: '请输入验证码',
+								title: "alert",
+								time: 2000
+							});
+						} else {
+							$.ajax({
+								type: "get",
+								url: gb.ajaxUrl + "r=user/check-code",
+								dataType: 'jsonp',
+								data: {
+									phone: phone,
+									code: verification,
+									mark:1,
+								},
+								success: function(re) {
+									console.log(re);
+									if(re.code) {
+										$.dialog({
+											content: re.msg,
+											title: "alert",
+											time: 2000
+										});
+										next = false;
+									} else if(re.code == 0) {
+										next = true;
+										if(next == true) {
+											if($('#password').val() == $('#passwordChk').val() && ($('#password').val().length) >= 6) {
+												var password = $('#password').val();
+												$.ajax({
+													type: 'GET',
+													dataType: 'jsonp',
+													url: gb.ajaxUrl + 'r=user/update-pwd',
+													data: {
+														"phone": phone,
+														"new_password": hex_md5(password),
+													},
+													success: function(e) {
+														if(e.code == 0) {
+															console.log(e.msg);
+
+															$.dialog({
+																content: '修改成功',
+																title: "ok",
+																okText: '确认',
+																ok: function() {
+																	app.action.href('login.html');
+																},
+															});
+
+														} else {
+															console.log(e.msg);
+															$.dialog({
+																content: e.msg,
+																title: "alert",
+																time: 2000
+															});
+															return;
+														}
+													}
+												})
+											} else {
+												$.dialog({
+													content: '请检查密码',
+													title: "alert",
+													time: 2000
+												});
+												return;
+											}
+										} else if(next == false) {
+											//				$.dialog({
+											//	        content : '请检查验证码',
+											//	        title: "alert",
+											//	        time : 2000
+											//	    	});
+											//	    	
+											//	    	createCode();
+										}
+									}
+								},
+								error: function(e) {
+									console.log(e)
+								}
+							});
+						}
+
+					}
+				}
+
+			})
+		</script>
+	</body>
+
+</html>

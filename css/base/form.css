@@ -1,0 +1,45 @@
+.form-wrap{
+	margin: 0 auto;
+	margin-top: .45rem;
+	padding: 0 .15rem;
+}
+
+.form-ul{
+	width: 100%;
+}
+
+.form-ul li{
+	width: 100%;
+	box-sizing: border-box;
+	height: .45rem;
+	line-height: .45rem;	
+	border: 1px solid #d5d5d5;
+	border-bottom-width: 0;
+	background: #fff;
+}
+.form-ul li:last-child{
+	border-bottom-width: 1px;
+}
+
+.form-ul li input{
+	width: 100%;
+	height: .3rem;
+	line-height: .3rem;
+	box-sizing: border-box;
+	padding-left: .1rem;
+	color: #666;
+	border: 0;
+	font-size: .16rem;
+	background: transparent;
+}
+
+.form-btn-wrap{
+	margin: 25px auto 10px;
+}
+.form-btn-wrap .btn{
+	display: inline-block;
+	width: 100%;
+	height: .45rem;
+	line-height: .45rem;
+	border-radius: .04rem;
+}

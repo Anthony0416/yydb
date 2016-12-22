@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/goods/search.css" />
+		<link rel="stylesheet" href="../../css/user/kf-details.css" />
+		<script type="text/javascript" src="../../js/quote/zepto.js" ></script>
+		<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>
+		<script type="text/javascript" src="../../js/quote/all.js" ></script>
+	</head>
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href='javascript:history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>问答详情</span>
+			</div>
+			<div class="details-body">
+				<div class="box-question">
+					<div class="Q">Q</div>
+					<div class="question">
+						夺宝获得的商品什么时候发货
+					</div>
+				</div>	
+				<div class="box-answer">
+					<div class="A">A</div>
+					<div class="answer">
+						获得夺宝商品后请您尽快提交收货地址，超过7天未确认收货地址，视为自动放弃该商品（系统不会默认您的“收货地址”中的地址信息，每次获得夺宝商品后都需要确认收货地址）。一般商品派发周期为10个工作日左右。苏宁易购、考拉海购、顺丰优选旗下商品较为特殊，派发周期较久，如您对于派发周期无法固定的商品较为介意，建议您慎重参与。
+					</div>
+				</div>
+				<div class="evaluated">
+					<p>本次解答是否对您有帮助</p>
+					<div class="choice">
+						<a class="positive ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_help.png"/>
+							有帮助
+						</a>
+						<a class="negative ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_unhelp.png" />
+							没帮助
+						</a>
+					</div>
+					<div class="j-rusult">感谢您的反馈，小宝会继续努力哒！</div>
+				</div>
+				<!--<div class="service">
+					<p>
+						需要更多帮助?
+						<a>
+							<img src="http://mimg.127.net/p/crm/20160811/img/contact.png" />
+						</a>
+					</p>
+					
+				</div>
+				-->
+			</div>
+		</div>	
+	</body>
+	<script type="text/javascript">
+		$('.positive').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+		$('.negative').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+	</script>
+	</html>

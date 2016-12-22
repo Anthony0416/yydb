@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" type="text/css" href="../../css/base/all.css"/>
+		<link rel="stylesheet" href="../../css/component/numInput.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<style type="text/css">
+		    body{
+		    	background: white;
+		    }
+			.pic{
+				font-size: 0;
+				width: 100%;
+			}
+			.pic img{
+				width: 100%;
+			}
+			/*按钮*/
+			.dianji{
+				position: relative;
+			}
+			.promptly{
+				width: 2.8rem;
+				height: .5rem;
+		        margin: 0 auto;
+				background: #4681ec;
+				line-height: .5rem;
+				font-size: .23rem;
+				border-radius: 0.06rem;
+				position: relative;
+			}
+			/*按钮下换线*/
+			.dianji:after{
+				content: "";
+				width: 84%;
+				height: 0.02rem;
+				background: #ededed;
+				position: absolute;
+				top: 0.83rem;
+				left: 8%;
+			}
+			/*文本*/
+			.explain{
+				margin: 0.73rem 0.45rem 0 0.45rem;
+				font-size: 0.12rem;
+			/*	position: relative;*/
+			}
+			.title{
+				height: .3rem;
+				line-height: .3rem;
+				font-size: 0.18rem;
+				color: red;
+			}
+			/*矩形*/
+			.title:before{
+				content: "";
+				width: .09rem;
+				height: .3rem;
+				background: red;
+				position: absolute;
+				left: 0.3rem;
+			}
+			/*文本格式*/
+			.e-text{
+				height: 2.7rem;
+				margin-top: .23rem;
+			}
+			.c-text{
+				margin-bottom: 0.05rem;
+				margin-left: .18rem;
+				font-size: .18rem;
+				line-height: 0.25rem;
+			}
+			.c-text:before{
+				content: "";
+				width: .05rem;
+				height: .05rem;
+				margin-top: .08rem;
+				border-radius: .03rem;
+				background: red;
+				position: absolute;
+				left: .36rem;
+			}
+			/*文本下换线*/
+			.add:after{
+				content: "";
+				width: 84%;
+				height: 0.02rem;
+				margin-top: 0.2rem;
+				background: #ededed;
+				position: absolute;
+			    left: 8%;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="head-back">
+			<a  class="btn-back-btn" href="javascript:history.go(-1);"></a>
+		</div>
+		<div class="pic">
+			<img src="../../img/huodong/一元夺宝2_01.jpg" />
+			<img src="../../img/huodong/一元夺宝2_02.jpg" />
+			<img src="../../img/huodong/一元夺宝2_03.jpg" />
+		</div>
+		<div class="dianji">
+		    <a href="../goods/category.html"><div class="promptly btn">立即夺宝</div></a>
+		</div> 
+		<div class="explain">
+			<p class="title">获宝网规则</p>
+			<ul class="e-text add">
+				<li class="c-text">每件商品参考市场价平分成相应“等分”，每份1元，一份对应1个XX。</li>
+				<li class="c-text">同一件商品可以购买多次或一次购买多份。</li>
+				<li class="c-text">当一件商品所有“等分”全部售出后计算出“XX”，拥有“XX”着即可获得此商品。</li>
+			</ul>
+		    <p class="title">获奖方式</p>
+			<ul class="e-text">
+				<li class="c-text">引入中国福利彩票“时时彩”开奖结果作为随机数值。</li>
+				<li class="c-text">时时彩开奖&nbsp;%&nbsp;人数&nbsp;是取余&nbsp;运算符。</li>
+				<li class="c-text">当一件商品所有“等分”全部售出后计算出“XX”，拥有“XX”着即可获得此商品。</li>
+			</ul>
+		</div>
+	</body>
+</html>

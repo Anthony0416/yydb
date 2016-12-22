@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>我的</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/person.css" />
+		<script type="text/javascript" src="../../js/quote/all.js"></script>
+		<script type="text/javascript" src="../../js/quote/upload.js" ></script>
+		<script src="../../js/backButton.js"></script>
+	</head>
+	<body>
+		<div id="body">			
+			<div id="userIfo">
+				<div id="userImg">
+					<div class="thumb">
+						<img src="" class="hide"/>
+					</div>
+					<form enctype="multipart/form-data" method="post" class="form">
+						<!--<input type="file" name="fileToUpload" class="fileToUpload" accept="image/*" />-->
+						<div class="upload-progress"><span></span></div>
+					</form>
+				</div>
+				<div id="userName"></div>
+				<div id="balance" class="user-header time-fun2">
+					<p class="header-text">
+						余额: <span id="dbb"></span>夺宝币		
+					</p>
+					<div class="header-btn">
+						<a href="recharge.html" class="red app" style="display: none;">充值</a>					
+						<a href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb6a080e93974bc1d&redirect_uri=http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/html/user/recharge.html&response_type=code&scope=snsapi_base&state=STATE#wechat_redirect" class="red wx" style="display: none;">充值</a>					
+						<a id="loginOut" class="red">退出</a>	
+					</div>			
+					
+				</div>
+				
+				<!--<div id="changeUserIfo">
+					<span class="arr userIfoArr"></span>
+				</div>-->
+			</div>
+			<div id='zilei' class="fenge">
+				<a href="buy_records.html">
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe609;</i>
+							<em>夺宝记录</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a>
+				<a href="lucky_records.html">
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe60e;</i>
+							<em>幸运记录</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a>
+				<a href="address.html">
+					<!--<p id="record">
+						<span>
+							<i class="iconfont red">&#xe60c;</i>
+							<em>我的晒单</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>-->
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe60a;</i>
+							<em>收货地址</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a>
+				<a href="recharge_records.html">
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe60d;</i>
+							<em>充值记录</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a><a href="water.html">
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe611;</i>
+							<em>流水记录</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a>
+				<a href="kf.html">
+					<p id="record">
+						<span>
+							<i class="iconfont red">&#xe60b;</i>
+							<em>夺宝客服</em>
+						</span>
+						<span class="arr userArr"></span>
+					</p>
+				</a>
+			</div>
+			
+			<!--include "../component/footer/index.html"-->
+			
+		</div>		
+		<!--<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>-->
+		<script src="../../js/user/browser.js"></script>
+		<script>
+		//get user info
+			$.ajax({
+				url: gb.ajaxUrl + "r=user/index",
+				dataType: 'jsonp',
+				success: function(data) {
+					if(data&&data.code == '0'){
+						data = data.data[0];	
+						console.log(data);
+						$("#userName").html(data.username+'<span>VIP'+ data.grade +'</span>');
+						$("#dbb").text(Number(data.balance));
+//						$("#userImg").addClass('user-grade'+data.grade);
+						$(".thumb>img").attr('src',data.img).show();
+						$("#balance").animate({
+							"-webkit-transform": 'translate(0,-' + $("#balance").height() + 'px)'
+						},600,app.ui.anim.timeFun1)
+						app.user.setUserInfo(data);
+					}else if(data.code == '-1'){
+						gb.storage.delete('PHPSESSID');	
+						app.action.href('login.html');
+					}
+				}
+			})
+			
+		//login out
+		$("#loginOut").tap(function(){
+			app.user.loginOut({
+				redirectUrl:'../index.html?ih'
+			});
+		})
+		
+		window.onresize = window.reSizeHtmlFont;
+		
+		$("#userImg").fileUpload({   
+	        "url": gb.ajaxUrl + 'r=user/upload',   
+	        "file": "myFile"  
+	    });
+	    
+	    
+	    //为公众号里，手机登录用户授权，以便可以调用微信支付
+	    if(browser.versions.mobile) {
+				//判断是否是移动设备打开。browser代码在下面
+				var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					//在微信中打开
+					$('.wx').show();
+				} else if(ua.match(/WeiBo/i) == "weibo") {
+					//在新浪微博客户端打开
+				} else if(ua.match(/QQ/i) == "qq") {
+					//在QQ空间打开
+				} else if(browser.versions.android || browser.versions.ios) {
+					//是否在安卓浏览器打开
+					$('.app').show();
+				}
+			} else {
+				//否则就是PC浏览器打开
+			}
+		</script>
+		
+		
+	</body>
+</html>

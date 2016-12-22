@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>分类</title>		
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/goods/category.css" />
+		<link rel="stylesheet" href="../../css/base/common.css" />
+		<script type="text/javascript" src="../../js/quote/all.js"></script>
+		<script src="../../js/backButton.js"></script>
+	</head>
+	<body>
+			
+		<div id="content">
+			<!--左侧分类-->
+			<div id="goodsNav" class="overtouch">	
+				<ul id="types">
+					<!--<template v-cloak v-for="item in items">
+						<li :id="item.id" :class="[item.id==defaultId?'on':'']">{{ item.name }}</li>
+					</template>-->
+					<li id="type0"><i class="iconfont icon-sousuo"></i></li>
+					<li id="type1" class="on">手机平板</li>
+					<li id="type2">电脑办公</li>
+					<li id="type3">数码音响</li>
+					<li id="type4">女性时尚</li>
+					<li id="type5">潮流新品</li>
+					<li id="type6">土豪专区</li>
+					<li id="type7">其他商品</li>
+					<li id="type">全部商品</li>
+					
+				</ul>
+			</div>
+			
+			<!--右侧排序和商品-->
+			<div class="goods-wrap">
+				<div id="sortNav">
+					<span id="hot" class="on">热门</span>
+					<span id='new'>最新</span>
+					<span id='sy'>剩余</span>
+					<span id="zx">总需</span>
+				</div>				
+				<div id="all-goods" class="overtouch" :class={'no-data':noDataShow}>
+					<template v-cloak v-for="item in items">
+						<!--<div style="width: 100%;background: yellow;height: 600px;">
+							1<br>21<br>21<br>21<br>21<br>21<br>21<br>21<br>21<br>21<br>2
+						</div>-->
+						<div :id="item.id" :periods="item.periods" class="good-item" :class="['good-region-'+item.region]" >
+							<div class="all-goods-img">
+								<img :src="item.img"/>
+							</div>
+							<div class="all-goods-info">
+								<p class="all-goods-info-name test-ellipsis">{{item.name}}</p>
+								<p class="all-goods-info-introduce  test-ellipsis">{{item.name}}</p>							
+								<div class="all-goods-info-progressBar">
+									<p class="jindutiao">
+											<span class="bar" >
+												<i class="color" :style="{width: item.now_people/item.total_people*100+'%'}"></i>
+											</span>
+									</p>
+									<p class="all-goods-info-text-2">
+										<span>需{{item.total_people}}人次</span>
+										<span>剩<b>{{item.residue_people}}</b>人次</span>										
+									</p>
+								</div>
+							</div>
+							<div class="iconfont red plus">&#xe602;</div>
+						</div>
+					</template>	
+					<i class="iconfont icon-50-copy hide" :class={'show':noDataShow}></i><p class="hide" :class={'show':noDataShow}>暂时没有相关类别商品</p>
+				</div>
+			</div>
+	
+		</div>
+		<!--include "../component/footer/index.html"-->
+		<script type="text/javascript" src="../../js/quote/vue.js" ></script>
+		<script type="text/javascript" src="../../js/goods/category.js" ></script>
+		<!--<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>-->
+		
+	</body>
+</html>

@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>充值中心</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/component/zepto.alert.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<style>
+			body {
+				text-align: center;
+			}
+			
+			#cz-wrap {
+				/*margin-top: 0.25rem;*/
+			}
+			
+			#cz-wrap p {
+				margin: 0 0.15rem;
+				line-height: .21rem;
+				color: gray;
+			}
+			
+			.cz-ul {
+				/*margin-top: .25rem;	*/
+			}
+			
+			.cz-ul li {
+				width: 33.33%;
+				height: 1.2rem;
+				background: #fff;
+				float: left;
+				box-sizing: border-box;
+				border-bottom: 1px solid #e9e9e9;
+				border-right: 1px solid #e9e9e9;
+				position: relative;
+				text-align: left;
+			}
+			
+			.cz-ul li::before {
+				content: '';
+				width: .5rem;
+				height: .5rem;
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				margin-top: -.25rem;
+				margin-left: -.25rem;
+				background: url(../../img/user/jb.jpg) 0 0 no-repeat;
+				background-size: 1.5rem;
+			}
+			
+			.cz-ul li.on em {
+				background: #F56A00;
+				color: #fff;
+			}
+			
+			.cz-ul li:nth-child(1)::before {
+				background-position: 0 0;
+			}
+			
+			.cz-ul li:nth-child(2)::before {
+				background-position: -0.50rem 0;
+			}
+			
+			.cz-ul li:nth-child(3)::before {
+				background-position: -1rem 0;
+			}
+			
+			.cz-ul li:nth-child(4)::before {
+				background-position: 0 -0.50rem;
+			}
+			
+			.cz-ul li:nth-child(5)::before {
+				background-position: -0.50rem -0.50rem;
+			}
+			
+			.cz-ul li:nth-child(6)::before {
+				background-position: -1rem -0.50rem;
+			}
+			
+			.cz-ul li span {
+				position: relative;
+				display: inline-block;
+				height: .25rem;
+				line-height: .25rem;
+				margin-top: .05rem;
+				margin-left: .24rem;
+				color: gray;
+			}
+			
+			.cz-ul li span::before {
+				content: '';
+				width: .24rem;
+				height: .24rem;
+				position: absolute;
+				top: 0;
+				left: -.22rem;
+				background: url(../../img/user/jb-icon.png) 0 0 no-repeat;
+				background-size: 20px;
+			}
+			
+			.other {
+				color: #F56A00;
+				margin-left: .05rem;
+			}
+			
+			.cz-ul em {
+				position: absolute;
+				height: .28rem;
+				line-height: .28rem;
+				bottom: 0;
+				background: rgba(224, 213, 204, 0.32);
+				width: 100%;
+				left: 0;
+				text-align: center;
+			}
+			
+			#btnWrap {
+				margin-top: .15rem;
+				padding: .15rem;
+			}
+			
+			#btnWrap a {
+				display: none;
+			}
+		</style>
+	</head>
+
+	<body class="has-header no-footer">
+		<!--include "../component/header/index.html"-->
+		<div id="cz-wrap">
+			<!--<p>为庆祝上线运行，充值赠送夺宝币（活动限时）</p>
+			<p style="color: #F56A00;">老板疯了！最高7%赠送+VIP全场折扣</p>-->
+			<ul class="cz-ul clearfix">
+				<li class="on"><span>60</span><em>￥6</em></li>
+				<li><span>180</span><em>￥18</em></li>
+				<li><span>680</span><em>￥68</em></li>
+				<li><span>1680</span><i class="other">送66</i><em>￥168</em></li>
+				<li><span>6660</span><i class="other">送366</i><em>￥666</em></li>
+				<li><span>16880</span><i class="other">送1168</i><em>￥1688</em></li>
+			</ul>
+		</div>
+		<style>
+			.vip {
+				/*height: .6rem;*/
+				margin: .24rem 0 .12rem;
+			}
+			
+			.vip .vip-introduce {
+				height: 100%;
+				background: #fff;
+			}
+			
+			.vip li {
+				position: relative;
+			}
+			
+			.vip li::before,
+			.vip li::after {
+				display: block;
+				content: '';
+				position: absolute;
+				top: .28rem;
+			}
+			
+			.vip li::before {
+				width: 100%;
+				border: 1px solid #F56A00;
+				left: 0;
+			}
+			
+			.vip li::after {
+				box-sizing: border-box;
+				width: 0.12rem;
+				height: 0.12rem;
+				border-radius: 50%;
+				border: 2px solid #F56A00;
+				background: #fff;
+				left: 50%;
+				margin-left: -.06rem;
+				margin-top: -.04rem;
+			}
+			
+			.vip li span {
+				color: #969696;
+			}
+			
+			.vip li div {
+				margin-top: .15rem;
+				color: #F56A00;
+				text-shadow: 1px 1px 1px #F56A00;
+			}
+			
+			.vip li p {
+				color: #F56A00;
+			}
+		</style>
+		<div class="vip">
+			<ul class="box-flex">
+				<li class="box-flex-item">
+					<span>充满100元</span>
+					<div>V1</div>
+					<p>全场99折</p>
+				</li>
+				<li class="box-flex-item">
+					<span>充满1000元</span>
+					<div>V2</div>
+					<p>全场98折</p>
+				</li>
+				<li class="box-flex-item">
+					<span>充满10000元</span>
+					<div>V3</div>
+					<p>全场97折</p>
+				</li>
+			</ul>
+
+		</div>
+
+		<style>
+			/*支付工具*/
+			
+			.pay {
+				width: 100%;
+				/*去掉支付宝支付后的高度*/
+				/*height: 1.2rem;*/
+				margin-top: .2rem;
+				/*padding: 0 20px;*/
+				box-sizing: border-box;
+				text-align: left;
+			}
+			
+			.pay div:active {
+				background-color: #E1E1E1;
+			}
+			
+			.alipay,
+			.wxpay {
+				height: .6rem;
+				position: relative;
+				box-sizing: border-box;
+				border-top: 1px solid #D6D6DA;
+				border-bottom: 1px solid #D6D6DA;
+				background: #fff;
+				padding: 0 .15rem;
+			}
+			
+			.wxpay {
+				border-top: none;
+			}
+			
+			.alipay-ico,
+			.wxpay-ico {
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				left: .15rem;
+				width: .38rem;
+				height: .38rem;
+				margin-top: -.19rem;
+				background: url(../../img/user/pay.png) no-repeat 0px 0px;
+				background-size: 1rem;
+			}
+			
+			.wxpay-ico {
+				background-position-x: -.4rem;
+			}
+			
+			.alipay a,
+			.wxpay a {
+				display: inline-block;
+				margin-left: .48rem;
+				width: 60%;
+			}
+			
+			.name {
+				font-size: 14px;
+				margin-top: 5px;
+			}
+			
+			.text {
+				font-size: 12px;
+				color: #969696;
+			}
+			
+			.checkbox {
+				display: inline-block;
+				position: absolute;
+				top: 50%;
+				margin-top: -.13rem;
+				right: .15rem;
+				width: .2rem;
+				height: .2rem;
+				border: none;
+				border: 1px solid #D6D6DA;
+				border-radius: .2rem;
+				padding: 2px;
+			}
+			
+			.checkbox span {
+				display: inline-block;
+				width: .2rem;
+				height: .2rem;
+				border-radius: .2rem;
+			}
+			
+			.payBor {
+				border-color: #fd7418;
+			}
+			
+			.payBor span {
+				background: #fd7418;
+			}
+		</style>
+		<div class="pay">
+			<!--<div class="alipay">
+				<span class="alipay-ico"></span>
+				<a class="name">支付宝</a>
+				<a class="text">推荐有支付宝的用户使用</a>
+				<div class="checkbox alipayBtn payBor">
+					<span></span>
+				</div>
+			</div>-->
+			<div class="wxpay">
+				<span class="wxpay-ico"></span>
+				<a class="name">微信</a>
+				<a class="text">单笔最高额度3000元</a>
+				<div class="checkbox wxpayBtn payBor">
+					<span></span>
+				</div>
+			</div>
+		</div>
+		<!--<div id="pay">
+			<p>选择支付方式</p>
+			<div id="pay_way">
+				<input name='pay' type="radio" value="alipay" checked="checked"/>支付宝
+				<br />
+				<input name='pay' type="radio" value="wechatpay"/>微信支付
+			</div>
+		</div>-->
+		<div id="btnWrap">
+			<a class="btn btn-default public" href="javascript:;">提交</a>
+			<a class="btn btn-default app" href="javascript:;">提交</a>
+		</div>
+		<script src="../../../dist/js/quote/VConsole.js"></script>
+		<script type="text/javascript" src="../../js/quote/zepto.alert.js"></script>
+		<script src="../../js/user/browser.js"></script>
+		<script>
+			$(".cz-ul li").tap(function() {
+				$(this).parent().find('li').removeClass('on');
+				$(this).addClass('on');
+			});
+			
+			
+			//用户取消订单
+			var cancelRecharge = function(trade_num) {
+				$.ajax({
+					type:"get",
+					url:gb.ajaxUrl+"r=pay/err-charge",
+					dataType:'jsonp',
+					data:{trade_no:trade_num},
+					success:function(re) {
+						console.log(re)
+					},
+					error:function(e) {
+						console.log(e)
+					}
+				});
+			}
+
+			if(browser.versions.mobile) {
+				//判断是否是移动设备打开。browser代码在下面
+				var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					//在微信中打开
+					$('.public').css('display', 'inline-block');
+
+					var wechatInfo = navigator.userAgent.match(/MicroMessenger\/([\d\.]+)/i);
+
+					$(".btn").tap(function() {
+
+						var check = $(".cz-ul li.on");
+						if(check.length == 0) {
+							alert('请先选择充值金额');
+						} else {
+							var obj = {
+								"recharge_money": check.find('em').text().replace('￥', ''),
+								"recharge_coin": check.find('span').text(),
+								"pay_type": 2,
+							};
+							if(check.find('i').length) {
+								obj.recharge_coin = parseInt(obj.recharge_coin) + parseInt(check.find('i').text().replace('送', ''));
+							}
+							console.log(obj);
+
+							if(!wechatInfo) {
+								//							    alert("充值仅支持微信");
+							} else if(wechatInfo[1] < "5.0") {
+								alert("充值仅支持微信5.0以上版本");
+							} else {
+								//								alert('微信5.0以上版本');
+								$.ajax({
+									type: "get",
+									url: gb.ajaxUrl + "r=user/order",
+									dataType: 'jsonp',
+									data: obj,
+									success: function(re) {
+										console.log(re);
+										var _d = re.data;
+										
+										var _trade_num = _d.trade_no;
+										var _appid = _d.appId;
+										var _timeStamp = _d.timeStamp;
+										var _nonceStr = _d.nonceStr;
+										var _package = _d.package;
+										var _paySign = _d.paySign;
+
+										function onBridgeReady() {
+											WeixinJSBridge.invoke(
+												'getBrandWCPayRequest', {
+													"appId": _appid, //公众号名称，由商户传入     
+													"timeStamp": _timeStamp, //时间戳，自1970年以来的秒数     
+													"nonceStr": _nonceStr, //随机串     
+													"package": _package,
+													"signType": "MD5", //微信签名方式     
+													"paySign": _paySign //微信签名 
+												},
+												function(res) {
+													// 使用以上方式判断前端返回,微信团队郑重提示：res.err_msg将在用户支付成功后返回    ok，但并不保证它绝对可靠。
+													if(res.err_msg == "get_brand_wcpay_request:ok") {
+														console.log(res);
+														$.dialog({
+															content: '充值成功',
+															title: "ok",
+															okText: '返回',
+															ok: function() {
+																location.href = document.referrer;
+															},
+															cancelText: '取消',
+															cancel: function() {}
+														});
+													} else {
+														console.log(res);
+														cancelRecharge(_trade_num)
+														alert('充值失败')
+													}
+												}
+											);
+										}
+
+										if(typeof WeixinJSBridge == "undefined") {
+											if(document.addEventListener) {
+												document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+											} else if(document.attachEvent) {
+												document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+												document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+											}
+										} else {
+											onBridgeReady();
+										}
+									},
+									error: function(e) {
+										console.log(e)
+									}
+								});
+							}
+
+						}
+
+					})
+					
+					
+					//为公众号里，手机登录用户授权，以便可以调用微信支付
+					var _url = window.location.href;
+					var _index = (_url.indexOf('?') == -1) ? false : _url.indexOf('?') + 6;
+					
+					if(_index) {
+						var _url2 = _url.slice(_index);
+						var code = _url2.slice(0, _url2.indexOf('&'));
+						var _obj = {
+							code: code,
+						};
+						
+						$.ajax({
+							type:"get",
+							url:gb.ajaxUrl+"r=user/get-openid",
+							dataType:'jsonp',
+							data:_obj,
+							success:function(re) {
+								console.log(re)
+							},
+							error:function(e) {
+								console.log(e)
+							}
+						});
+					}
+
+				} else if(ua.match(/WeiBo/i) == "weibo") {
+					//在新浪微博客户端打开
+				} else if(ua.match(/QQ/i) == "qq") {
+					//在QQ空间打开
+				} else if(browser.versions.android || browser.versions.ios) {
+					//是否在安卓浏览器打开
+					$('.app').css('display', 'inline-block');
+					var channels = null;
+					var pays = {}; //存储支付信息对象
+					// 监听plusready事件  
+					document.addEventListener("plusready", function() {
+						plus.payment.getChannels(function(s) {
+							channels = s;
+							console.log(channels)
+							pays['wxpay'] = channels[0];
+							checkServices(channels[0]);
+						}, function(e) {
+							//							alert( "获取支付通道列表失败："+e.message );
+						});
+					}, false);
+
+					//      检测是否安装支付软件
+					function checkServices(pc) {
+						if(!pc.serviceReady) {
+							var txt = null;
+							switch(pc.id) {
+								case "alipay":
+									txt = "检测到系统未安装“支付宝快捷支付服务”，无法完成支付操作，是否立即安装？";
+									break;
+								default:
+									txt = "系统未安装“" + pc.description + "”服务，无法完成支付，是否立即安装？";
+									break;
+							}
+							plus.nativeUI.confirm(txt, function(e) {
+								if(e.index == 0) {
+									pc.installService();
+								}
+							}, pc.description);
+						} else {
+							console.log(pc.description + "存在");
+						}
+					}
+
+					var w = null;
+
+					var PAYSERVER = gb.ajaxUrl + 'r=user/order';
+					// 支付
+					function pay(id, money, coin) {
+						if(w) {
+							return;
+						} //检查是否请求订单中
+						var url = PAYSERVER;
+						if(id == 'alipay' || id == 'wxpay') {
+							//							url += id;
+						} else {
+							//							plus.nativeUI.alert("当前环境不支持此支付通道！", null, "捐赠");
+							return;
+						}
+
+						url += '&recharge_coin=' + coin + '&pay_type=1' + '&recharge_money=' + money;
+						plus.nativeUI.showWaiting();
+						// 请求支付订单
+						var amount = money;
+						$.ajax({
+							type: "get",
+							url: url,
+							dataType: 'jsonp',
+							success: function(re) {
+								var _trade_num = re.data.trade_no;
+								console.log("----- 请求订单成功 -----");
+								plus.payment.request(pays[id], re['data'], function(result) {
+									console.log("----- 支付成功 -----");
+									$.dialog({
+										content: '充值成功',
+										title: "ok",
+										okText: '返回',
+										ok: function() {
+											location.href = document.referrer;
+										},
+										cancelText: '取消',
+										cancel: function() {}
+									});
+									plus.nativeUI.closeWaiting();
+								}, function(e) {
+									console.log("----- 支付失败 -----");
+									alert('充值失败');
+									cancelRecharge(_trade_num);
+									//									alert("[" + e.code + "]：" + e.message);
+									plus.nativeUI.closeWaiting();
+								});
+							},
+							error: function(e) {
+								console.log("----- 请求订单失败 -----");
+							}
+						});
+					}
+
+					$(".btn").tap(function() {
+						var check = $(".cz-ul li.on");
+						if(check.length == 0) {
+							alert('请先选择充值金额');
+						} else {
+							var obj = {
+								"recharge_money": check.find('em').text().replace('￥', ''),
+								"recharge_coin": check.find('span').text(),
+								"pay_type": 1,
+							};
+
+							if(check.find('i').length) {
+								obj.recharge_coin = parseInt(obj.recharge_coin) + parseInt(check.find('i').text().replace('送', ''));
+							}
+							pay('wxpay', obj.recharge_money, obj.recharge_coin);
+						}
+					})
+				}
+			} else {
+				//否则就是PC浏览器打开
+			}
+		</script>
+	</body>
+
+</html>

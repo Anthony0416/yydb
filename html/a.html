@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>夺宝</title>
+		<link href=".../img/icon.ico" rel="shortcut icon"/>
+		<link rel="stylesheet" href="../css/base/base.css" />	
+		<link rel="stylesheet" href="../css/component/numInput.css" />
+		<script type="text/javascript" src="../js/quote/rem.js" ></script>
+		<script>
+			var component = {};
+		</script>
+	</head>
+	<body>
+		<ul id="wrap">
+			
+		</ul>
+		
+		<script type="text/javascript" src="../js/quote/zepto.js" ></script>
+		
+			
+		<!--include "component/numInput/index.html"-->
+		
+		<script>
+		var str = '';
+		for(var i=0;i<10;i++){
+			str += '<li>'+component.numInput+'</li>'
+		}
+		$("#wrap").html(str);
+		
+		setTimeout(function(){
+			$("#wrap li").find('input').each(function(){
+				$(this).NumInput({
+			      max : 9999,
+			      min : 1,
+			      num : 1,
+			      fn  : function(){
+			        console.log(this.ts.value);
+			      }
+			    });
+			})
+		},10)
+			//console.log(component.numInput)
+		</script>
+	</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>夺宝记录</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/buy_records.css"/>
+		<script type="text/javascript" src="../../js/quote/all.js"></script>
+		<link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css"/>
+		<script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+	<body class="has-header">
+		<!--include "../component/header/index.html"-->
+		<div id="content">
+			<!--<div class="goods-wrap">
+				<div class="all-goods">
+					<div class="good-item">
+						<div class="all-goods-img">
+							<img src="../../../dev/img/category/QQ图片20160903100812.png"/>
+						</div>
+						<div class="all-goods-info">
+							<p class="all-goods-info-name  test-ellipsis">Samsung S7</p>
+
+							<div class="all-goods-info-progressBar">
+									<p class="jindutiao">
+											<span class="bar" >
+												<i class="color" :style="{width: item.now_people/item.total_people*100+'%'}"></i>
+											</span>
+									</p>
+									<p class="all-goods-info-text-2">
+										<span>总需16800 人次</span>
+										<span class="residue-right">剩余<b>6666</b></span>
+									</p>
+								</div>
+								<p class="all-goods-info-introduce">
+									<span>已购买<b>5</b>人次</span>
+									<span class="chakan">查看我的夺宝号码</span>
+								</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="goods-wrap">
+				<div class="all-goods">
+					<div class="good-item">
+						<div class="all-goods-img">
+							<img src="../../../dev/img/category/QQ图片20160903100812.png"/>
+						</div>
+						<div class="all-goods-info">
+							<i class="luckstatue weikai"></i>
+							<p class="all-goods-info-name  test-ellipsis">Samsung S7</p>
+
+							<p class="all-goods-info-introduce">
+								<span>本期编号：<b>123135468</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>即将揭晓：<a>time</a></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>已购买<b>5</b>人次</span>
+								<span class="chakan">查看我的夺宝号码</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="goods-wrap">
+				<div class="all-goods">
+					<div class="good-item">
+						<div class="all-goods-img luck">
+							<img src="../../../dev/img/category/QQ图片20160903100812.png"/>
+						</div>
+						<div class="all-goods-info">
+							<i class="luckstatue"></i>
+							<p class="all-goods-info-name  test-ellipsis">Samsung S7</p>
+							<p class="all-goods-info-introduce">
+								<span>获奖者：<b>123135468</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>本期编号：<b>123135468</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>幸运号码：<b>1213123</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>已购买<b>5</b>人次</span>
+								<span class="chakan">查看我的夺宝号码</span>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>-->
+		</div>
+		<script type="text/javascript">
+		var mark = 0;
+		init();
+		function init(){
+			//获取数据
+			$.ajax({
+				type:"get",
+				url:gb.ajaxUrl+"r=user/indiana",
+				dataType:"jsonp",
+				success:function(mes){
+					if(mes.code ==-1){
+//						$.dialog({
+//							content:mes.msg,
+//							title:"alert",
+//							time:2000
+//						})
+						app.ui.noData({id:'content'})
+					}else{
+						spelldata(mes.data)
+					}
+				}
+			});
+
+			//点击事件跳转到具体的商品详情
+			$("#content").on("tap",".goods-wrap",function(e){
+				if($(e.target).is('.chakan')){			//查看我的夺宝号码
+					if(mark){null}else{
+						var obj = {};
+						var lucknum = $(e.target).attr("lucknum");
+						obj.periods = $(e.target).attr("luck");
+						obj.record_id = $(e.target).attr("record_id");
+						$.ajax({
+							type:"get",
+							url:gb.ajaxUrl + "r=shop/lucky-number",
+							dataType:"jsonp",
+							data:obj,
+							success:function(mes){
+									cont = mes.data.join(',').replace(/,/g,"\n");
+									cont = cont.replace(lucknum,'<span style="color: red;font-size: 20px;">'+lucknum+'</span>');
+									console.log(cont)
+									mark = 1;
+									setTimeout(function(){
+										$.dialog({
+											content :cont,
+											title: null,
+											width: '3rem',
+											okText: '确定',
+											ok : function() {
+												mark = 0
+											},
+											lock : false,
+										});
+									},0);
+							},error:function(e){
+								console.log(e)
+							}
+						});
+					}
+				}else{
+					window.location.href='../goods/goods_details.html?periods=' + encodeURI($(this).attr('periods'));
+				}
+			})
+			
+			
+		}
+		
+		function spelldata(mes){
+			console.log(mes);
+			var gather = "";
+			var lottery = "";
+			var lucky = "";
+			for(i in mes.gather){
+				var _d = mes.gather[i];
+				var per = _d.now_people / _d.total_people * 100 + '%';
+				gather += '<div class="goods-wrap" periods="'+ _d.periods +'">'+
+							'<div class="all-goods">'+
+								'<div class="good-item">'+
+									'<div class="all-goods-img"><img src="'+ _d.img +'"/></div>'+
+									'<div class="all-goods-info">'+
+										'<p class="all-goods-info-name  test-ellipsis">'+ _d.name +'</p>'+
+										'<div class="all-goods-info-progressBar">'+
+											'<p class="jindutiao">'+
+													'<span class="bar" >'+
+														'<i class="color" style="width: ' + per + ';"></i>'+
+													'</span>'+
+											'</p>'+
+											'<p class="all-goods-info-text-2">'+
+												'<span>总需'+ _d.total_people +' 人次</span>'+
+												'<span class="residue-right">剩余<b>'+ _d.residue_people +'</b></span>	'	+
+											'</p>'+
+										'</div>'+
+										'<p class="all-goods-info-introduce">'+
+											'<span>已购买<b>'+ _d.times +'</b>人次</span>'+
+											'<span class="chakan" record_id ="'+ _d.id +'" luck= "'+ _d.periods +'">查看我的夺宝号码</span>'+
+										'</p>'+
+										'<p class="all-goods-info-introduce">'+
+											'<span>购买时间：<a>'+ _d.create_on +'</a></span>'+
+										'</p>'+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+						'</div>'
+			}
+			//$("#content").append(gather);
+			for(i in mes.lottery){
+				var _d = mes.lottery[i];
+				lottery += '<div class="goods-wrap" periods="'+ _d.periods +'">'+
+							'<div class="all-goods">'+
+								'<div class="good-item">'+
+									'<div class="all-goods-img"><img src="'+ _d.img +'"/></div>'+
+									'<div class="all-goods-info"><i class="luckstatue weikai"></i>'+
+										'<p class="all-goods-info-name  test-ellipsis">'+ _d.name +'</p>'+
+										'<p class="all-goods-info-introduce">'+
+											'<span>本期编号：<b>'+ _d.periods +'</b></span>'+
+										'</p>'+
+										'<p class="all-goods-info-introduce">'+
+											'<span>购买时间：<a>'+ _d.create_on +'</a></span>'+
+										'</p>'+
+										'<p class="all-goods-info-introduce">'+
+											'<span>已购买:<b>'+ _d.times +'</b>人次</span>'+
+											'<span class="chakan" record_id ="'+ _d.id +'" luck= "'+ _d.periods +'">查看我的夺宝号码</span>'+
+										'</p>'+
+									'</div>'+
+								'</div>'+
+							'</div>'+
+						'</div>'
+			}
+			//$("#content").append(lottery);
+			for(i in mes.lucky){
+				var _d = mes.lucky[i];
+				if(_d.mark === 1){
+					_d.mark = "zhong";
+				}else{
+					_d.mark = "buzhong";
+				} 
+				lucky += '<div class="goods-wrap" periods="'+ _d.periods +'">'
+							+'<div class="all-goods">'
+								+'<div class="good-item">'
+									+'<div class="all-goods-img luck"><img src="'+ _d.img +'"/></div>'
+									+'<div class="all-goods-info"><i class="luckstatue '+ _d.mark +'"></i>'
+										+'<p class="all-goods-info-name test-ellipsis">'+ _d.name +'</p>'
+										+'<p class="all-goods-info-introduce"><span>获奖者：<b>'+ _d.username +'</b></span></p>'
+										+'<p class="all-goods-info-introduce"><span>本期编号：<b>'+ _d.periods +'</b></span></p>'
+										+'<p class="all-goods-info-introduce"><span>幸运号码：<b>'+ _d.lucly_no+'</b></span></p>'
+										+'<p class="all-goods-info-introduce"><span>购买时间：<a>'+ _d.create_on +'</a></span></p>'
+										+'<p class="all-goods-info-introduce">'
+											+'<span>已购买<b>'+ _d.times +'</b>人次</span>'
+											+'<span class="chakan" lucknum = "'+ _d.lucly_no +'" record_id ="'+ _d.id +'" luck= "'+ _d.periods +'">查看我的夺宝号码</span>'
+										+'</p>'
+									+'</div>'
+								+'</div>'
+							+'</div>'
+						+'</div>'
+			}
+			
+			//$("#content").append(lucky);
+			$("#content").append(gather+lottery+lucky);
+		}
+		</script>
+	</body>
+</html>

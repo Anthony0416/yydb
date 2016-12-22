@@ -1,0 +1,8 @@
+#register, #forget{
+	float: left;
+	margin-top: 15px;
+	color: #0079fe;
+}
+#forget{
+	float: right;
+}

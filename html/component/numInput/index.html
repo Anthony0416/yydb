@@ -1,0 +1,119 @@
+<script id="tpl" type="text/x-template">
+	<div class="num-input">
+		<input/>
+		<a class="btn-up" href="javascript:;"><i></i></a>
+		<a class="btn-down" href="javascript:;"><i></i></a>
+	</div>
+</script>
+<script>
+	component.numInput = document.getElementById('tpl').innerHTML
+	
+	$.fn.NumInput = function(options) {
+		this.each(function() {
+			var o = {
+				max: 99999999, //最大值
+				min: 1, //最小值
+				val: 1, //默认值
+				up: '.btn-up', //上点击dom
+				down: '.btn-down', //下点击dom
+				num: 1, //加减间隔
+				"float": 0,
+				"pad": 1, //补零位数
+				ts: this,
+				fn: function() {} //回调函数
+			}
+			if(options) {
+				$.extend(o, options);
+			} else {
+				o.val = $(this).val() || 1;
+			}
+			var $ipt = $(this);
+			var $up = $ipt.siblings(o.up);
+			var $down = $ipt.siblings(o.down);
+			$ipt.val(o.val);
+			var _val = $ipt.val();
+			//加法
+			var doAdd = function() {
+				var n1 = parseFloat($ipt.val()); //原数字
+				if(!n1) {
+					n1 = 0;
+
+				}
+				var n2 = n1 + o.num; //新数字
+				$ipt.val(parseFloat((n2 > o.max ? n1 : n2).toFixed(o['float'])));
+				o.fn();
+				//classChange();
+			}
+			var doMinus = function() {
+				var n1 = parseFloat($ipt.val()); //原数字
+				if(!n1) {
+					n1 = 1;
+				}
+				var n2 = n1 - o.num; //新数字
+				$ipt.val(parseFloat((n2 < o.min ? n1 : n2).toFixed(o['float'])));
+				o.fn();
+				//classChange();
+			}
+
+			$ipt.off().on('mousedown', function(event) {
+				event.stopPropagation();
+			}).blur(function() {
+				if($ipt.val() == '') {
+					$ipt.val(o.val)
+				}
+				if($ipt.val() > o.max) {
+					$ipt.val(o.max);
+				} else if($ipt.val() < o.min) {
+					$ipt.val(o.min);
+				}
+				isPad();
+				o.fn();
+			}).on("keyup", function() {
+				var str = $ipt.val().match(/\d{1,}(\.\d{0,}){0,1}/);
+				str = (str && str[0]) || '';
+				if(str != '') {
+					$ipt.val(parseFloat(parseFloat(str).toFixed(o['float'])));
+					if(o.min < 2) {
+						if(Number($ipt.val()) > Number(o.max)) {
+							$ipt.val(o.max);
+						} else if(Number($ipt.val()) < Number(o.min)) {
+							$ipt.val(o.min);
+						}
+					}
+					if(isNaN($ipt.val())) {
+						$ipt.val(o.val);
+					}
+				} else {
+					$ipt.val('');
+				}
+				isPad();
+				o.fn();
+				//classChange();
+			});
+
+			$up.length > 0 && $up.off().click(function() {
+				doAdd();
+			});
+
+			$down.length > 0 && $down.off().click(function() {
+				doMinus();
+			})
+			var isPad = function() {
+					if(o.pad > 1) {
+						$ipt.val(CP.Util.pad($ipt.val(), o.pad));
+					}
+				}
+				//  function classChange(){
+				//    $ipt.siblings().removeClass('no-click');
+				//    if($ipt.val()==o.min){
+				//      $ipt.prev().addClass('no-click');
+				//    }
+				//    if($ipt.val()==o.max){
+				//      $ipt.next().addClass('no-click');
+				//    }
+				//  }
+				//  classChange();
+		})
+		return this;
+	};
+</script>

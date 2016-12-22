@@ -1,0 +1,140 @@
+a{
+	color: gray
+}
+/*头部*/
+#userIfo {
+	height: 1.98rem;
+	background:url(../../img/user/user-bg.jpg); /*rgba(255, 107, 0, 1);*/
+	background-size: 375px;
+	tab-size: center;
+	position: relative;
+	overflow: hidden;
+}
+#userImg {
+	width: .8rem;	
+	margin: 0 auto;
+	margin-top: .2rem;
+}
+#userImg img,.form>input {
+	border-radius: 50%;
+	width: .68rem;
+	height: .68rem;
+	border: 0.06rem solid rgba(255,255,255,0.5);
+}
+.form {
+	position: absolute;
+	top: 0;
+	opacity: 0;
+}
+.user-grade1,.user-grade2,.user-grade3{
+	position: relative;
+}
+.user-grade1::before,.user-grade2::before,.user-grade3::before {
+	position: absolute;
+	content: '';
+	width: .25rem;
+	height: .25rem;
+	right: .08rem;
+    top: .08rem;
+	background: url(../../img/user/user-v.png) 0 0 no-repeat;
+	background-size: .75rem;
+}
+.user-grade1::before {
+	background-position: 0 0;
+}
+.user-grade2::before {
+	background-position: -.25rem 0;
+}
+.user-grade3::before {
+	background-position: -.5rem 0;
+}
+#userName{
+	color: #fff;
+	font-size: .18rem;
+	text-align: center;
+	margin-top: .04rem;
+}
+#userName span{
+	display: inline-block;  
+    background: rgb(241, 192, 124);
+    border-radius: .06rem;
+    padding: 0 .12rem;
+    font-size: .14rem;
+    line-height: .22rem;
+    margin-left: .08rem;
+    color: #9C0954;
+}
+
+.user-header{
+	font-size: .14rem;
+	width: 100%;
+	position: absolute;
+	bottom: -.5rem;
+	height: .5rem;
+	line-height: .5rem;
+	background: rgba(0,0,0,.4);
+	padding: 0 .15rem;
+	box-sizing: border-box;
+}
+
+.header-text{
+	float: left;
+	line-height: inherit;
+	color: #fff;
+}
+.header-btn{
+	float: right;	
+	height: 100%;
+	line-height: inherit;		
+}
+.header-btn a{
+	padding: .075rem .15rem;
+	width: .45rem;
+	background:#fff;	
+	margin-left: .05rem;
+}
+
+
+#changeUserIfo {
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 1rem;
+	height: 90px;
+}
+/*个人信息修改箭头*/
+.userIfoArr {
+	float: right;
+	margin: 35px 15px;
+}
+/*个人中心下方选项*/
+#zilei {
+	background-color: white;
+	margin: 20px 0 20px 0;
+	border-top: 1px solid #EFEEEE;
+	font-size: .14rem;
+}
+#zilei p {
+	height: .5rem;
+	border-bottom: 1px solid #EFEEEE;
+}
+#zilei span {
+	display: inline-block;
+	line-height: .5rem;
+	margin: 0 .1rem;
+}
+
+#zilei i{
+	display: inline-block;
+	font-size: .2rem;
+	padding: 0 .05rem;
+	width: .2rem;
+}
+
+/*下方箭头*/
+.userArr {
+	float: right;
+	width: 10px;
+	height: 10px;
+	margin: 16px 19px !important;
+}

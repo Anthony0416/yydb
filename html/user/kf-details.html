@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/goods/search.css" />
+		<link rel="stylesheet" href="../../css/user/kf-details.css" />
+		<script type="text/javascript" src="../../js/quote/zepto.js" ></script>
+		<script type="text/javascript" src="../../js/quote/VConsole.js" ></script>
+		<script type="text/javascript" src="../../js/quote/all.js" ></script>
+	</head>
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href='javascript:history.back(-1);'>
+					<i class="arrow arrow-left arrow-size-12"></i>
+				</a>
+				<span id="name" class='white'>问答详情</span>
+			</div>
+			<div class="details-body">
+				<div class="box-question">
+					<div class="Q">Q</div>
+					<div class="question">
+						一元夺宝提醒您：保护自身利益，避免损失
+					</div>
+				</div>	
+				<div class="box-answer">
+					<div class="A">A</div>
+					<div class="answer">
+						1、各种形式的合购、合资、私下交易等都具有极高的风险，请大家切勿参与；<br />
+						2、凡以“高中奖率、内部员工、系统存在漏洞”等信息进行代购的，均属欺诈行为；<br />
+						3、一元夺宝官方工作人员在任何时候都不会向用户索取账户密码等信息，请大家注意保护自己的信息安全；<br />
+						4、当您获得商品之后，一元夺宝不会以私信或QQ私聊等形式通知您获得商品，更不会以任何理由要求您缴纳任何其他费用；<br />
+						5、如有疑问请第一时间联系一元夺宝在线客服，客服工作时间为9点至18点。<br /><br />
+						感谢大家一直以来的信任与支持，希望大家在一元夺宝常获惊喜，祝各位好运！
+					</div>
+				</div>
+				<div class="evaluated">
+					<p>本次解答是否对您有帮助</p>
+					<div class="choice">
+						<a class="positive ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_help.png"/>
+							有帮助
+						</a>
+						<a class="negative ">
+							<img src="http://mimg.127.net/p/crm/20160811/img/icon_unhelp.png" />
+							没帮助
+						</a>
+					</div>
+					<div class="j-rusult">感谢您的反馈，小宝会继续努力哒！</div>
+				</div>
+				<!--<div class="service">
+					<p>
+						需要更多帮助?
+						<a>
+							<img src="http://mimg.127.net/p/crm/20160811/img/contact.png" />
+						</a>
+					</p>
+					
+				</div>-->
+			</div>
+		</div>	
+	</body>
+	<script type="text/javascript">
+		$('.positive').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+		$('.negative').click(function(){
+			$('.choice').toggleClass('none');
+			$('.j-rusult').toggleClass('block');
+		})
+	</script>
+</html>

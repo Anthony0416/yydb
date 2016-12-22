@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title></title>
+		<!--<link rel="stylesheet" href="../../css/base/base.css" />
+		<link rel="stylesheet" href="../css/base/allUse.css" />-->
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/personIfo.css" />
+	</head>
+
+	<body>
+		<div id="body">
+			<div id="title1">
+				<a id="back" href="person.html">
+				</a>
+				<span id="name" class='white'>个人资料</span>
+			</div>
+			<div id="ifo">
+				<div id="head">
+					<span>头像</span>
+					<div class="camera-area">
+						<form enctype="multipart/form-data" method="post">
+							<input type="file" name="fileToUpload" class="fileToUpload" accept="image/*" />
+							<div class="upload-progress"><span></span></div>
+						</form>
+						<div class="thumb"></div>
+					</div>
+				</div>
+				<div id="userId">
+					<span>昵称</span>
+					<input id="ID" type="text" maxlength="10" placeholder="请输入昵称(不超多10个字)"/>
+				</div>
+				<div id="address">
+					<span>管理收货地址</span>
+					<span class="arr"></span>
+				</div>
+				<div id="input">
+					<span>保存</span>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript" src="../../js/quote/all.js" ></script>
+		<script type="text/javascript" src="../../js/quote/upload.js" ></script>
+		<script>
+			$(".camera-area").fileUpload({   
+		        "url": "savetofile.php",   
+		        "file": "myFile"  
+		      });   
+		</script>
+	</body>
+
+</html>

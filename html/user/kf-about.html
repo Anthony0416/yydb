@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title>关于</title>
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>夺宝服务</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<script src="../../js/quote/all.js"></script>
+		<script type="text/javascript" src="../../js/quote/zepto.js"></script>
+		<style type="text/css">
+			.logo {
+				position: relative;
+				height: 2rem;
+			}
+			.logo img {
+				width: 1rem;
+				height: 1rem;
+				border-radius: 10px;
+				position: absolute;
+				left: 50%;
+				top: 25%;
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+			}
+			.logo p {
+				position: absolute;
+				left: 50%;
+				top: 85%;
+				-webkit-transform: translateX(-50%);
+				transform: translateX(-50%);
+				font-size: 16px;
+			}
+			
+			.p_group {
+				margin-top: 0.35rem;
+			}
+			.p_group div {
+				position: relative;
+				display: block;
+		    height: 37px;
+		    line-height: 37px;
+		    border-bottom: 1px solid #d5d5d5;
+		    background-color: #ffffff;
+		    padding-left: .19rem;
+		    color: gray;
+		    font-size: 14px;
+			}
+			
+			.arrow_right {
+				left: 94%;
+				border-color: #666;
+				height: .08rem;
+				width: .08rem;
+				margin-left: -.04rem;
+				margin-top: -.04rem;
+				-webkit-transform: rotate(45deg);
+				transform: rotate(45deg);
+				position: absolute;
+				top: 50%;
+				border-style: solid;
+				border-width: 1px 1px 0 0;
+				display: inline-block;
+			}
+			
+			#copyright {
+				color: gray;
+				text-align: center;
+				margin-top: 0.34rem;
+				font-size: 13px;
+			}
+		</style>
+	</head>
+
+	<body class="has-header">
+		<div id="body">
+			<!--include "../component/header/index.html"-->
+
+			<div class="logo">
+				<img src="../../../dist/img/user/logo.png" />
+				<p>版本 v<span class="version">1.0.1</span></p>
+			</div>
+
+			<div class="p_group">
+				<div>
+					<a href="agreement.html"><p id='xieyi' class="xieyi">用户协议</p></a>
+					<span class="arrow_right"></span>
+				</div>
+				<div>
+					<a href="clause.html"><p class="tiaokuan">使用条款</p></a>
+					<span class="arrow_right"></span>
+				</div>
+			</div>
+
+			<div id="copyright">
+				<p>Copyright © 2015-2016</p>
+				<p>深圳市德斯普瑞科技有限公司</p>
+			</div>
+			
+		</div>
+	</body>
+
+</html>

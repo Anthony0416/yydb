@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="telephone=no,email=no" name="format-detection">
+    <title>大轮盘中奖纪录</title>
+    <link rel="stylesheet" href="../../css/base/all.css"/>
+    <link rel="stylesheet" href="../../css/user/water.css">
+    <link rel="stylesheet" href="../../css/component/zepto.alert.css">
+    <script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+    <script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css">
+    	.name,.pay{
+    		color: #ff6b00;
+    	}
+    </style>
+</head>
+<body class="has-header">
+<!--include "../component/header/index.html"-->
+<div id="content">
+    <!--<div class="list">-->
+         <!--<p class="top"><span class="name">购买苹果苹果</span><span class="pay">申请提货</span></p>-->
+         <!--<p class="bottom"><span class="balance">&nbsp;</span><span class="time">1999-09-09 15:15:15</span></p>-->
+     <!--</div>-->
+</div>
+<script>
+    //获取数据
+    $.ajax({
+        type:"get",
+        dataType:"jsonp",
+        url:gb.ajaxUrl+"r=shop/prize",
+        success: function (mes) {
+            console.log(mes)
+            if(mes.code ==0){
+                mes=mes.data.list
+                var s = "";
+                for(i in mes){
+                    var _d = mes[i];
+//                  if(_d.status==0){
+//                      _d.status = "申请提货"
+//                  }else if(_d.status==1){
+//                      _d.status = "提货成功"
+//                  }
+					if(_d.prize!=="谢谢参与"){
+						s +=  '<div class="list">'
+                            +'<p class="top"><span class="name">+'+ _d.prize +'夺宝币</span><span class="pay" id="'+ _d.id +'">'+ '赠送成功'+'</span></p>'
+                            +' <p class="bottom"><span class="balance">&nbsp;</span><span class="time1">'+ _d.create_on +'</span></p>'
+                            +'</div>'	
+					}
+                }
+                $('#content').append(s);
+            }else{
+                $.dialog({
+                    content:mes.msg,
+                    title:"alert",
+                    ok:function(){
+                        history.go(-1);
+                    }
+                })
+            }
+
+        }
+    })
+    //提货按钮
+    $("#content").on("click",".pay",function(){
+        var obj={};
+        obj.id=$(this).attr("id");
+        console.log(obj);
+        if($(this).text()=="申请提货"){
+            $.dialog({
+                content : '请输入充值的手机号',
+                title: null,
+                okText: '充值',
+                ok : function() {
+                    obj.note=$(".num").val();
+                    $.ajax({
+                        type:"get",
+                        url:gb.ajaxUrl+"r=shop/apply",
+                        dataType:"jsonp",
+                        data:obj,
+                        success: function (mes) {
+                            $.dialog({
+                                content:"恭喜您充值成功",
+                                title:null,
+                                okText:'确定',
+                                ok:function(){
+                                    return
+                                }
+                            })
+                        }
+                    })
+                },
+                cancelText : '取消',
+                cancel : function() {}
+            });
+            $(".rDialog-content").after("<input type='text' class='num'/>")
+
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width,initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<meta content="telephone=no,email=no" name="format-detection">
+		<title>幸运记录</title>
+		<link rel="stylesheet" href="../../css/base/all.css" />
+		<link rel="stylesheet" href="../../css/user/buy_records.css" />
+		<link rel="stylesheet" type="text/css" href="../../css/component/zepto.alert.css" />
+		<script src="../../js/quote/all.js" type="text/javascript" charset="utf-8"></script>
+		<script src="../../js/quote/zepto.alert.js" type="text/javascript" charset="utf-8"></script>
+	</head>
+
+	<body>
+		<!--include "../component/header/index.html"-->
+		<div id="body">
+			<div style="width: 100%;height: .4rem;"></div>
+			<div id="content">
+				<!--<div class="all-goods">
+					<div class="good-item">
+						<div class="all-goods-img">
+							<img src="../../../dev/img/category/QQ图片20160903100812.png" />
+						</div>
+						<div class="all-goods-info">
+							<p class="all-goods-info-name  test-ellipsis">Samsung S7</p>
+
+							<p class="all-goods-info-introduce">
+								<span>本期编号：<b>123135468</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>幸运号码：<b>1213123</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>已购买<b>5</b>人次</span>
+								<span class="chakan">查看我的夺宝号码</span>
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="all-goods">
+					<div class="good-item">
+						<div class="all-goods-img">
+							<img src="../../../dev/img/category/QQ图片20160903100812.png" />
+						</div>
+						<div class="all-goods-info">
+							<p class="all-goods-info-name  test-ellipsis">Samsung S7</p>
+
+							<p class="all-goods-info-introduce">
+								<span>本期编号：<b>123135468</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>幸运号码：<b>1213123</b></span>
+							</p>
+							<p class="all-goods-info-introduce">
+								<span>已购买<b>5</b>人次</span>
+								<span class="chakan">查看我的夺宝号码</span>
+							</p>
+						</div>
+					</div>
+				</div>-->
+			</div>
+			<!--微信分享指引-->
+			<div id="shareBg">
+				<div id="guide">
+					<img src="../../img/user/guide1.png">
+				</div>
+			</div>
+
+			<!--app分享弹层-->
+			<div id="sharePage">
+				<div id="shareItem">
+					<ul>
+						<li class="weChat">
+							<span>微信好友</span>
+						</li>
+						<li class="moment">
+							<span>微信朋友圈</span>
+						</li>
+					</ul>
+				</div>
+				<div id="cancel">取消</div>
+			</div>
+			<!--遮盖层，防止点穿-->
+			<div id="cover"></div>
+			
+
+		</div>
+
+		<script src="../../js/user/browser.js"></script>
+		<script src="../../js/quote/VConsole.js"></script>
+		<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+
+		<script type="text/javascript">
+			init();
+			var periods;
+			
+			//防止点穿事件影响
+			var Cover = function() {
+				$('#cover').show();
+				
+				setTimeout(function() {
+					$('#cover').hide();
+				},300)
+			}
+			
+			function init() {
+				$.ajax({
+					type: "get",
+					url: gb.ajaxUrl + "r=shop/lucky-record",
+					dataType: "jsonp",
+					success: function(mes) {
+						console.log(mes)
+						
+						
+						if(mes.code == "-1") {
+							//						$.dialog({
+							//							content:mes.msg,
+							//							title:"alert",
+							//							time:2000
+							//						})
+							app.ui.noData({
+								id: 'content'
+							})
+						} else {
+							periods = mes.data[0].periods;
+							
+							mes = mes.data
+							spelldata(mes);
+						}
+					}
+				});
+				//点击事件跳转到具体的商品详情
+				$("#content").on("tap", ".all-goods", function(e) {
+					//				var parent = $(e.target).parents().find('.all-goods');				
+					var _this = $(this);
+					console.log(_this.find('.check'))
+					if($(e.target).is('.chakan')) { //查看我的夺宝号码
+						var obj = {};
+						var lucknum = $(e.target).attr("lucknum");
+						obj.periods = $(e.target).attr("luck");
+						obj.record_id = $(e.target).attr("record_id");
+						console.log(obj)
+						$.ajax({
+							type: "get",
+							url: gb.ajaxUrl + "r=shop/lucky-number",
+							dataType: "jsonp",
+							data: obj,
+							success: function(mes) {
+								cont = mes.data.join(',').replace(/,/g, "\n");
+								cont = cont.replace(lucknum, "<b style='color: red;font-size: 20px'>" + lucknum + '</b>')
+								console.log(cont)
+								setTimeout(function() {
+									$.dialog({
+										content: cont,
+										title: null,
+										width: '3rem',
+										okText: '确定',
+										ok: function() {
+											null;
+										},
+										lock: false,
+									});
+								}, 0);
+							},
+							error: function(e) {
+								console.log(e)
+							}
+						});
+					} else if($(e.target).is('.btn_L')) {
+						if(_this.attr("classify_sta")==0){
+							window.location.href="virtual-goods.html?periods=" + encodeURI($(_this).attr('periods'))+"&name="+ encodeURI($(_this).attr("name")) +"&img="+  encodeURI($(_this).attr('img'));
+						}else{
+							setTimeout(function() {
+								$.dialog({
+									content: '我们将按照您的默认地址发货，您确定您已提交正确的默认收货地址吗？',
+									title: null,
+									width: '3rem',
+									okText: '确定',
+									ok: function() {
+										//								$(this).children('#check').html('<p class="note">等待确认收货地址</p>');
+										sq();
+									},
+									cancelText: '检查',
+									cancel: function() {
+										app.action.href('address.html');
+									}
+								});
+
+								function sq() {
+									$.ajax({
+										url: gb.ajaxUrl + "r=user/delivery",
+										dataType: "jsonp",
+										data: {
+											account:"",
+											periods: _this.attr('periods')
+										},
+										success: function(mes) {
+											console.log(mes)
+											if(mes.code == "-1") {
+												$.dialog({
+													content: mes.msg,
+													title: "alert",
+													time: 2000
+												});
+											} else {
+												_this.find('.check').html('<p class="note">申请提货中，我们将尽快为您处理...</p>');
+												$.dialog({
+													content: '申请成功，我们将尽快为您处理',
+													title: "ok",
+													time: 2000
+												});
+											}
+										}
+									});
+								}
+							}, 0);
+						}
+						Cover();
+
+					} else if($(e.target).is('.btn_R')) {
+						setTimeout(function() {
+							$.dialog({
+								content: '商品将按照总需求次数转换为夺宝币（此商品可转换 ' + _this.attr('coin') + ' * 0.85 = ' + _this.attr('coin') * 0.85 + ' 夺宝币）且不能再提货，请确定',
+								title: null,
+								width: '3rem',
+								okText: '确定',
+								ok: function() {
+									changeToDBB();
+								},
+								cancelText: '取消',
+								cancel: function() {}
+							});
+
+							function changeToDBB() {
+								$.ajax({
+									url: gb.ajaxUrl + "r=user/trans",
+									dataType: "jsonp",
+									data: {
+										periods: _this.attr('periods')
+									},
+									success: function(mes) {
+										console.log(mes)
+										if(mes.code == "-1") {
+											$.dialog({
+												content: mes.msg,
+												title: "alert",
+												time: 2000
+											});
+										} else {
+											_this.find('.check').html('<p class="note">已转为夺宝币</p>');
+											$.dialog({
+												content: '已为您转为夺宝币',
+												title: "ok",
+												time: 2000
+											});
+										}
+									}
+								});
+							}
+						}, 0);
+						e.stopPropagation();
+						Cover();
+					} else if($(e.target).is('.app')) {
+						$('#cover').show();
+						$('#sharePage').show();
+						
+						setTimeout(function() {
+							$('#cover').hide();
+						},300)
+						
+						periods = $(this).attr('periods');
+						
+					} else if($(e.target).is('.wx')) {
+						$('#shareBg').show();
+						
+						periods = $(this).attr('periods');
+						
+						wxPublicShare(periods);
+						
+					} else {
+						window.location.href = '../goods/goods_details.html?periods=' + encodeURI($(this).attr('periods'));
+					}
+				})
+			}
+
+			function spelldata(mes) {
+				var s = "";
+				for(i in mes) {
+					var _d = mes[i];
+					var status = '';
+					//0代表这个商品未做任何操作 1代表申请提货成功 2代表发货中  3代表本次交易已经成功完结4代表把商品转成夺宝币成功
+					if(_d.status == '0') {
+						status = '<span class="btn_L">申请提货</span><span class="btn_R">转为夺宝币</span>';
+					} else if(_d.status == '1') {
+						status = '<p class="note">申请提货中，我们将尽快为您处理...</p>';
+					} else if(_d.status == '2') {
+						status = '<p class="note">发货中...</p>';
+					} else if(_d.status == '3') {
+						status = '<p class="note">已收货</p>';
+					} else if(_d.status == '4') {
+						status = '<p class="note">已转为夺宝币</p>';
+					}
+					s += '<div class="all-goods" img="'+ _d.img +'" name="'+ _d.name +'" classify_sta="'+ _d.classify_sta +'" periods = "' + _d.periods + '" coin = "' + _d.coin + '">' +
+						'<div class="good-item">' +
+						'<div class="all-goods-img">' +
+						'<img src="' + _d.img + '" />' +
+						'</div>' +
+						'<div class="all-goods-info"><i class="luckstatue zhong"></i>' +
+						'<p class="all-goods-info-name  test-ellipsis">' + _d.name + '</p>' +
+						'<p class="all-goods-info-introduce">' +
+						'<span>本期编号：<b>' + _d.periods + '</b></span>' +
+						'</p>' +
+						'<p class="all-goods-info-introduce">' +
+						'<span>幸运号码：<b>' + _d.lucky_no + '</b></span>' +
+						'</p>' +
+						'<p class="all-goods-info-introduce">' +
+						'<span>已购买<b>' + _d.times + '</b>人次</span>' +
+						'<span class="chakan" lucknum ="' + _d.lucky_no + '" record_id ="' + _d.id + '" luck= "' + _d.periods + '">查看我的夺宝号码</span>' +
+						'</p>' +
+						'</div>' +
+						'</div>' +
+						'<div class="check">' + status +
+						'</div>' +
+						'<div class="share wx"></div>' +
+						'<div class="share app"></div>' +
+						'</div>'
+
+				}
+				$("#content").append(s);
+			}
+			
+			var wxPublicShare = function(pe) {
+				wx.onMenuShareAppMessage({
+					title: '获宝网', // 分享标题
+					desc: '我中奖了，来获宝网和小伙伴们一起夺宝吧！', // 分享描述
+					link: 'http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/html/user/sharePage.html?periods=' + pe, // 分享链接
+					imgUrl: 'http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/img/touxiang/duobao2.jpg', // 分享图标
+					type: 'link', // 分享类型,music、video或link，不填默认为link
+					dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
+					success: function() {
+						// 用户确认分享后执行的回调函数
+						$('#shareBg').hide();
+					},
+					cancel: function() {
+						// 用户取消分享后执行的回调函数
+						alert('取消分享')
+					}
+				});
+
+				wx.onMenuShareTimeline({
+					title: '我中奖了，来获宝网和小伙伴们一起夺宝吧！', // 分享标题
+					link: 'http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/html/user/sharePage.html?periods=' + periods, // 分享链接
+					imgUrl: 'http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/img/touxiang/duobao2.jpg', // 分享图标
+					success: function() {
+						// 用户确认分享后执行的回调函数
+						$('#shareBg').hide();
+					},
+					cancel: function() {
+						alert('取消分享')
+							// 用户取消分享后执行的回调函数
+					}
+				});
+			}
+			
+			//公众号 和 app 的分享
+			if(browser.versions.mobile) {
+				//判断是否是移动设备打开。browser代码在下面
+				var ua = navigator.userAgent.toLowerCase(); //获取判断用的对象
+				if(ua.match(/MicroMessenger/i) == "micromessenger") {
+					//在微信中打开
+					$('#body').addClass('wx');
+
+					$('#shareBg').on('touchend', function() {
+						$(this).hide();
+						return false;
+					})
+					$('#shareBg').on('touchmove', function() {
+						return false;
+					})
+
+					//微信分享
+					var _appId, _timeStamp, _nonceStr, _signature;
+					var _url = window.location.href;
+
+					$.ajax({
+						type: "get",
+						url: gb.ajaxUrl + "r=share/share-info",
+						dataType: 'jsonp',
+						data: {
+							url: _url
+						},
+						success: function(re) {
+							console.log(re)
+							var _d = re.data;
+							_appId = _d.appId;
+							_timeStamp = _d.timestamp;
+							_nonceStr = _d.nonceStr;
+							_signature = _d.signature;
+
+							wx.config({
+								debug: false,
+								appId: _appId,
+								timestamp: _timeStamp,
+								nonceStr: _nonceStr,
+								signature: _signature,
+								jsApiList: [
+									// 所有要调用的 API 都要加到这个列表中
+									'checkJsApi',
+									'openLocation',
+									'getLocation',
+									'onMenuShareTimeline',
+									'onMenuShareAppMessage'
+								]
+							});
+
+							wx.checkJsApi({
+								jsApiList: [
+									'getLocation',
+									'onMenuShareTimeline',
+									'onMenuShareAppMessage'
+								],
+								success: function(res) {
+									console.log(res)
+								}
+							});
+						},
+						error: function(e) {
+							console.log(e)
+						}
+					});
+
+					wx.ready(function() {
+						wxPublicShare(periods);
+					});
+
+				} else if(ua.match(/WeiBo/i) == "weibo") {
+					//在新浪微博客户端打开
+				} else if(ua.match(/QQ/i) == "qq") {
+					//在QQ空间打开
+				} else if(browser.versions.android || browser.versions.ios) {
+					//是否在安卓浏览器打开
+					$('#body').addClass('app');
+
+					$('#cancel').tap(function() {
+						$('#sharePage').hide();
+					})
+
+					//分享
+					var share = {
+						ok: function() {
+							//页面事件
+							var shareEvents = {
+								//取消
+								back: function() {
+									$('#back').on('click', function() {
+										$('#sharePage').hide();
+									})
+								},
+								//分享微信好友
+								weChat: function() {
+									$('.weChat').on('click', function() {
+										plus.nativeUI.showWaiting();
+										shareHref({
+											'id': "weixin",
+											'ex': 'WXSceneSession',
+										});
+									})
+								},
+								//分享微信朋友圈
+								moment: function() {
+									$('.moment').on('click', function() {
+										plus.nativeUI.showWaiting();
+										shareHref({
+											'id': "weixin",
+											'ex': 'WXSceneTimeline',
+										});
+									})
+								},
+							}
+
+							//分享事件
+							var Intent = null,
+								File = null,
+								Uri = null,
+								main = null;
+							var shares = null;
+							var shareImageUrl = '';
+							// H5 plus事件处理
+							function plusReady() {
+								setTimeout(function() {
+									updateSerivces()
+								}, 600)
+								if(plus.os.name == "Android") {
+									Intent = plus.android.importClass("android.content.Intent");
+									File = plus.android.importClass("java.io.File");
+									Uri = plus.android.importClass("android.net.Uri");
+									main = plus.android.runtimeMainActivity();
+								}
+							}
+							if(window.plus) {
+								plusReady();
+							} else {
+								document.addEventListener("plusready", plusReady, false);
+							}
+							/**
+							 * 更新分享服务
+							 */
+							function updateSerivces() {
+								plus.share.getServices(function(s) {
+									console.log(s)
+									shares = {};
+									for(var i in s) {
+										var t = s[i];
+										shares[t.id] = t;
+									}
+									//       tip("获取分享服务列表成功");
+								}, function(e) {
+//									tip("获取分享服务列表失败：" + e.message);
+								});
+							}
+
+							/**
+							 * 分享操作
+							 */
+							function shareAction(id, ex) {
+								var s = null;
+								if(!id || !(s = shares[id])) {
+									//         tip("无效的分享服务！");
+									return;
+								}
+								if(s.authenticated) {
+									//         tip("---已授权---");
+									shareMessage(s, ex);
+								} else {
+									//         tip("---未授权---");
+									s.authorize(function() {
+										shareMessage(s, ex);
+									}, function(e) {
+										//           tip("认证授权失败");
+									});
+								}
+							}
+
+							/**
+							 * 发送分享消息
+							 */
+							function shareMessage(s, ex) {
+
+								var msg = {
+									href: 'http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/html/user/sharePage.html?periods=' + periods,
+									title: '我中奖了，来获宝网和小伙伴们一起夺宝吧！',
+									content: '我中奖了，来获宝网和小伙伴们一起夺宝吧！',
+									thumbs: ['http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/img/touxiang/duobao2.jpg'],
+									pictures: ['http://fenliulianglo.com/tiduihulian/share/project/duobao/H5/dist/img/touxiang/duobao2.jpg'],
+									extra: {
+										scene: ex
+									}
+								};
+
+								s.send(msg, function() {
+									$('#sharePage').hide();
+									plus.nativeUI.toast('已分享');
+									plus.nativeUI.closeWaiting();
+								}, function(e) {
+									//							tip("分享失败!");
+								});
+							}
+							/**
+							 * 分享按钮点击事件
+							 */
+							function shareHref(opts) {
+								var ids = opts;
+								shareAction(ids.id, ids.ex)
+							}
+
+							shareEvents.back();
+
+							shareEvents.moment();
+							shareEvents.weChat();
+						}
+					}
+					share.ok();
+
+				}
+			} else {
+				//否则就是PC浏览器打开
+			}
+		</script>
+	</body>
+
+</html>
